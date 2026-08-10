@@ -4,420 +4,398 @@
 <h1 align="center">OpSec</h1>
 
 
-<p align="center">A client-side Minecraft mod that provides protection against client fingerprinting, tracking exploits, and other privacy focused features.</p>
+<p align="center">Minecraft Client Edition protects the client from fingerprints, viruses and more. It's funny</p>
 
 <p align="center">
-<a href="https://modrinth.com/mod/opsec"><img alt="Modrinth Downloads" src="https://img.shields.io/modrinth/dt/opsec?logo=modrinth&logoColor=white&label=Modrinth&color=00AF5C"></a>
-<a href="https://modrinth.com/mod/opsec/versions"><img alt="Supported Minecraft Versions" src="https://img.shields.io/badge/Available%20for-1.20%20%E2%80%93%2026.2-00AF5C"></a>
-<a href="https://www.curseforge.com/minecraft/mc-mods/opsec"><img alt="CurseForge Downloads" src="https://img.shields.io/curseforge/dt/1519411?logo=curseforge&logoColor=white&label=Curseforge&color=F16436"></a>
-<a href="https://www.curseforge.com/minecraft/mc-mods/opsec"><img alt="Supported Minecraft Versions" src="https://img.shields.io/badge/Available%20for-1.20%20%E2%80%93%2026.2-F16436"></a>
-<a href="https://github.com/aurickk/OpSec/releases"><img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/aurickk/OpSec/total?logo=github&logoColor=white&label=GitHub&color=6e5494"></a>
-<a href="https://github.com/aurickk/OpSec/releases/latest"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/aurickk/OpSec?logo=github&logoColor=white&label=Release&color=6e5494"></a>
+
+<a href="https://modrinth.com/mod/opsec"><img alt="Modrinth download" src="https://img.shields.io/modrinth/dt/opsec?logo=modrinth">
+<a href="https://modrinth.com/mod/opsec/versions"><img alt="Supported Minecraft versions" src="https://img.shields.io/badge/Available%20for-1.20%20%E2%80%93%2026.20for-1.20%20%E2%80%93%2026.2-00AF5C"></a>
+<a href="https://www.curseforge.com/minecraft/mc-mods/opsec"><img alt="CurseForge Download" src="https://img.shields.io/curseforge/dt/1519411?logo=curseforge">
+<a href="https://github.com/aurickk/OpSec/releases"><img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/aurickk/OpSec/total?logo=github">
+<a href="https://github.com/aurickk/OpSec/releases/latest'> <img alt = 'GitHub Release' src = 'https://img.shields.io/github/v/release/aurickk/OpSec?logo=github">
 </p>
 
 
-> [!WARNING]
-> This is a passion project built and maintained with **AI**.
+> [! suggestion]
+> This is a passion project, built and maintained by **AI**.
 
-> [!IMPORTANT]
-> Fake phishing sites and Discord servers has been distributing **trojanized** builds of OpSec. Only download OpSec from these official sources:
+> [!important]
+> Our Discord server supports Rogue and OpSec sites that use **Trojans**. Download the program from the website:
 > - **[Modrinth](https://modrinth.com/mod/opsec)**
-> - **[GitHub Releases](https://github.com/aurickk/OpSec/releases)**
-> - **[CurseForge](https://www.curseforge.com/minecraft/mc-mods/opsec)** (updated less frequently)
+> - **[GitHub Release](https://github.com/aurickk/OpSec/releases)**
+> - **[CurseForge](https://www.curseforge.com/minecraft/mc-mods/opsec)** (updated regularly)
 >
-> Builds from anywhere else are not official and may be malicious.
+> Linking to other websites is illegal and dangerous.
 
-## What it does 
+## what does it do
+- **[Parody as Vanilla](#Vanilla like a spoof)** - Set the icon name to vanilla and close all visible settings
+- **[spoof the channel](#Channel Fraud)** - Close the mod's online channels to avoid detection
+- **[Known Package Filter](#Known Package Filter)** - conditionally removes embedded package IDs from the configuration connection
+- **[Packet Cache Isolation](#Packet Cache Isolation)** - Packet isolation source per account to prevent tracking
+- **[](#block-local-urls)** - Block source packet redirects to local/private urls
+- **[Strip Mod Shader Overrides](#Strip-mod-shader-overrides)** - Strip-mod-shader-overrides Strip-mod-shader-overrides Overrides the shader of the server resource package that targets non-whitelisted mods.
+- **[Key Analysis Protection](#)** - Protection against detection of key analysis operations on all server packages
+- **[Meteor Fix](#)** - Disable protection of faulty Meteor client key solution
+- **[List of authorized changes](#list of authorized changes)** - Automatic or manual removal of changes from protection
+- **[Chat Signature Control](#Chat Signature Control)** - Configure the signature behavior of chat messages
+- **[Account Manager](#Account Manager)** - Switching between Minecraft accounts using activation tokens.
+- **[Block Telemetry](#)** - allows the collection of data sent to Mojang
 
-- **[Spoof as Vanilla](#spoof-as-vanilla)** - Set brand name to vanilla and block all mod detections
-- **[Channel Spoofing](#channel-spoofing)** - Conditionally block mod network channels to prevent detection
-- **[Known-Pack Filtering](#known-pack-filtering)** - Conditionally strip built-in pack identifiers from the configuration handshake
-- **[Isolate Pack Cache](#isolate-pack-cache)** - Isolate resource packs per-account to prevent tracking
-- **[Block Local URLs](#block-local-urls)** - Block resource pack redirects to local/private addresses
-- **[Bypass Server Pack Requirement](#bypass-server-pack-requirement)** - Let the user toggle required server resource pack(s) like client packs 
-- **[Strip Mod Shader Overrides](#strip-mod-shader-overrides)** - Strip server resource pack shader overrides targeting non-whitelisted mods
-- **[Key Resolution Protection](#key-resolution-protection)** - Protect against key resolution mod detection in any server packet
-- **[Meteor Fix](#meteor-fix)** - Disable Meteor Client's flawed key resolution protection
-- **[Mod Whitelist](#mod-whitelist)** - Automatically or manually exempt mods from protection
-- **[Chat Signing Control](#chat-signing-control)** - Configure chat message signing behavior
-- **[Account Manager](#account-manager)** - Switch between Minecraft accounts using session tokens
-- **[Telemetry Blocking](#telemetry-blocking)** - Disable data collection sent to Mojang
 
-> If you're interested in servers or plugins that are using tracking related exploits then look in the [Hall of Shame](https://github.com/NikOverflow/ExploitPreventer/blob/master/HALL_OF_SHAME.md).
+> > Check [Hall of Shame](https://github.com/NikOverflow/ExploitPventer/blob/master/HALL_OF_SHAME.md) for server management or plugin installation.
 
-## Requirements
+## love
 
 - **Minecraft** 1.20 – 26.2
-- **Fabric Loader** 0.16.0+ (0.18.5+ for MC 26.1.x)
-- **Fabric API** (matching your Minecraft version)
+- **FabricTools** 0.16.0 (0.18.5 for MC 26.1.x)
+- **Platform API** (e.g. Minecraft version)
+- 
+## Meeting
 
-### Installation
+1. Install [Fabricmc Loader](https://fabricmc.net/use/) according to your Minecraft version.
+2. Download the latest [Fabric API](https://modrinth.com/mod/fabric-api) for your version of Minecraft.
+3. Download the latest version of `opsec-[minecraft_version] [version].jar` from the [Download] page (https://github.com/aurickk/OpSec/releases/).
+4. Place all mods in the ".minecraft/mods" folder.
+5. Start Minecraft
 
-1. Install [Fabric Loader](https://fabricmc.net/use/) for your Minecraft version
-2. Download the latest [Fabric API](https://modrinth.com/mod/fabric-api) for your Minecraft version
-3. Download the latest `opsec-[minecraft_version]+[version].jar` from the [Releases](https://github.com/aurickk/OpSec/releases/) page
-4. Place both mods in your `.minecraft/mods` folder
-5. Launch Minecraft
+## to make
 
-## Configurations
+Settings are available via the OpSec radio button in the Multiplayer Settings section or in the [Mod Menu](https://modrinth.com/mod/modmenu).
 
-The settings menu is accessible via the `OpSec` button in the multiplayer server selection menu header or via [Mod Menu](https://modrinth.com/mod/modmenu).
-
-<img width="1465" height="820" alt="image" src="https://github.com/user-attachments/assets/c69a768b-60ac-4f78-9705-184f6c4e4495" />
-
+<img width="1465" height="300" alt="image" src="https://github.com/user-attachments/assets/c69a768b-60ac-4f78-9705-184f6c4e4495" />
 
 If settings are changed while connected to a server it is recommended to reconnect to the server to ensure changes are applied.
 
-#### Protection Tab
 
-| Setting | Description |
-|---------|-------------|
-| **Spoof as vanilla** | Enable/disable [Spoof as Vanilla](#spoof-as-vanilla) |
-| **Isolate Pack Cache** | Enable/disable [cache isolation](#isolate-pack-cache) |
-| **Block Local Pack URLs** | Enable/disable [local URL blocking](#block-local-urls) |
-| **Bypass Server Pack Requirement** | Configure [server pack bypass](#bypass-server-pack-requirement) behavior:<br/>• **MANUAL** (default): Default vanilla behavior on push. You can still toggle any server pack.<br/>• **ASK**: Server resource pack not applied but with consent screen to ask if the pack(s) should be applied<br/>• **ALWAYS ON**: Server resource pack not applied by default. You can still toggle any server pack |
-| **Strip Mod Shader Overrides** | Enable/disable [shader override stripping](#strip-mod-shader-overrides) |
-| **Clear Cache** | Delete all cached server resource packs |
-| **Key Resolution Spoofing** | Enable/disable [key resolution protection](#key-resolution-protection) |
-| **Fake Default Keybinds** | Return default vanilla keybind values instead of actual bindings |
-| **Meteor Fix** | Disable Meteor Client's broken key resolution protection (only shown when Meteor is installed) |
-| **Signing Mode** | Configure [chat signing](#chat-signing-control) behavior:<br/>• **OFF**: Strip signatures (maximum privacy)<br/>• **ON**: Default Minecraft behavior<br/>• **AUTO**: Only sign when required (recommended) |
-| **Disable Telemetry** | Enable/disable [telemetry blocking](#telemetry-blocking) |
+#### security card
 
-#### Whitelist Tab
 
-| Setting | Description |
-|---------|-------------|
-| **Whitelist Mode** | Select whitelist behavior:<br/>• **BLOCK ALL**: All mod content blocked<br/>• **AUTO**: Mods with network channels are automatically whitelisted (default)<br/>• **CUSTOM**: Manually select which mods to whitelist |
-| **Installed Mods** | Toggle individual mods ON/OFF to exempt them from protection (CUSTOM mode only) |
+| System                                   | information                                                                        |
+|------------------------------------------|------------------------------------------------------------------------------------|
+| **Vanilla**                              | Enable/disable [Default](#)                                                        |
+| **NO REAL MONEY**                        | Enable/disable [Free Support](#)                                                   |
+| **General address**                      | [Previous URL](#block-local-urls) Add/Delete                                       |
+| **Ignore configuration server requests** | write a message.                                                                   |
+| **Entertainment Mode**                   | [Shadow Removal](#strip-mod-shader-overrides) On/Off.                              |
+| **Uninstall the program**                | Delete the database from the server                                                |
+| **Applies to Missouri residents only**   | Enables/disables password protection                                               |
+| **Default icon is not available**        | Change the current icon.                                                           |
+| **Good meteor**                          | Removes small explosion protection settings (only visible if Meteor is installed). |
+| **How to close**                         | arro[chat](#)                                                                      |
+| **Get Telemetry**                        | enable [edit telemetry](#)                                                         |
 
-#### Miscellaneous Tab
+#### Free table
 
-| Setting | Description |
-|---------|-------------|
-| **Show Alerts** | Display chat messages when tracking is detected |
-| **Show Toasts** | Display popup notifications for important events |
-| **Log Detections** | Log all detection events to game log for transparency |
-| **Debug Alerts** | Show alerts for all probed keys, even unchanged ones |
-| **Debug Command** | Enable the `/opsec` debug command. Off by default.
+| Format           | Display                                                             |
+|------------------|---------------------------------------------------------------------|
+| **Item Concept** | Choose a rental feature <br/>• **Upgrade**. All the tools are gone. |
+| **in many ways** | Enable/disable unlock mode (mod only)<br/>                          |
 
-#### Accounts Tab
+#### mix the dough
 
-| Setting | Description |
-|---------|-------------|
-| **Saved Accounts** | List of added accounts with login/logout and remove buttons |
-| **Refresh All** | Revalidate all account tokens (invalid tokens marked red) |
-| **Add Session Token** | Add a new account using a session (access) token |
-| **Import** | Import accounts from a JSON file |
-| **Export** | Export accounts to a JSON file |
+| list of options            |                                                   |
+|----------------------------|---------------------------------------------------|
+| **Press Release**          | Search social networks while browsing.            |
+| **Let's**                  | Stay tuned for announcements about special events |
+| **Record Code**            | All data is saved as game data                    |
+| **FULL PAYMENT**           | The main test questions are shown. Change again   |
+| **Book of Discrimination** | Install the /opsec patch. Too much salt.          |
 
-### Debug Commands
+#### of mathematics
 
-The `/opsec` command is **off by default** (enable it in Misc → Debug Command). When enabled, use `/opsec` in-game to access debug information:
+|                      | Mechanical details                                 |
+|----------------------|----------------------------------------------------|
+| **Account Security** | List of buttons to add, remove and delete accounts |
+| **MORE INFORMATION** | Restore all backup IDs (red IDs are visible)       |
+| **Description**      | Add title (input) Add new message image.           |
+| **Brother**          | Extract data from a JSON file                      |
+| **Export**           | Add values to a JSON file                          |
 
-| Command | Description |
-|---------|-------------|
-| `/opsec` | Show available commands |
-| `/opsec info` | Show overview of all tracked mods |
-| `/opsec info <mod>` | Show details for a specific mod (translation keys, keybinds, channels, known packs, shaders) |
-| `/opsec channels` | Show all tracked network channels with whitelist status |
+### Make it happen
 
-### Understanding Alerts
+By default, the /opsec*** command is disabled. For more information (and additional security), use the /opsec command.
 
-- **Key Resolution Exploit Detected**: Server is probing your keys
-- **Resource Pack Fingerprinting Detected**: Suspicious resource pack URL detected
-- **Local URL Scan Detected**: Resource pack targeting your local/private address
+| Do more.            |                                                                                                |
+|---------------------|------------------------------------------------------------------------------------------------|
+| "/obsec"            | The Shaw Plan.                                                                                 |
+| "/info-osek"        | All methods are summarized below.                                                              |
+| View "/opsec <mod>" | Shows information about various areas (translations, keys, path keys, special folders, images) |
+| '/osec channel'     | Check whitelist status of controlled websites                                                  |
 
-## Feature Details
+### Follow the instructions
 
-### Spoof as Vanilla
+- **GENERAL USE** The server verifies your information.
+- Search **page**. The resource URL is found.
+- **Enable URL**: Use URL as source.
 
-Servers can query your client brand to detect whether you're running a modded client. OpSec provides true vanilla spoofing by blocking all mod key resolutions, network channels, and known-pack identifiers (whilst keeping vanilla ones).
+## Explain
 
-- **ON** - Appear as an unmodified Minecraft client
-- **OFF** - Appear as a standard Fabric client (default)
+### It is light like vanilla.
 
-Set to OFF by default to allow auto mod whitelisting (whitelist mods with network channels).
+The server may ask for your username to verify that you are using a normal user. OpSec ensures the efficiency of operations by protecting the gaps between data, communication and information (temporary memory).
 
----
+- **Continue** - Appears as a Minecraft user
+- **To** - Show as commercial seller (default).
 
-### Isolate Pack Cache
-Based on [LiquidBounce](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/java/net/ccbluex/liquidbounce/injection/mixins/minecraft/util/MixinDownloadQueue.java).
-
-Server-required resource packs could be used to fingerprint client instance across accounts.
-
-https://alaggydev.github.io/posts/cytooxien/
-
-Instead of storing all resource packs in a shared cache (`~/.minecraft/downloads/`), OpSec creates separate cache directories for each account UUID.
+The default setting is "off" to enable automatic authentication. (Network Settings and Network Settings)
 
 ---
 
-### Block Local URLs
+### Various packages
 
-Derived from [ExploitPreventer](https://github.com/NikOverflow/ExploitPreventer) by [NikOverFlow](https://github.com/NikOverflow)
+Use liquid jump.
 
-Malicious servers can send resource pack URLs that redirect to your local network to probe for local devices and services.
+You can use the site manager to get more details.
 
-https://alaggydev.github.io/posts/cytooxien/
+https://alagidev.github.io/posts/citookin/
 
-OpSec checks if a redirect or normal request targets a local address, then blocks the connection.
+Translating 50 times...
+Approx 0 min 36 sec remaining
+
+OpSec in random memory. ("~/.minecraft/downloads/"), but a separate folder is created for each account UUID.
+
+---
+### Local link blocked
+
+Source: [EkploitPreventer](https://github.com/NikOverflov/EkploitPreventer) and [NikOverFlov](https://github.com/NikOverflov).
+
+Antivirus software can send URLs to the Internet to identify nearby devices and services.
+
+https://alaggydev.github.io/posts/cytoxin/
+
+opSec determines whether the request is a local address or a global request and closes the connection.
 
 ---
 
-### Bypass Server Pack Requirement
+### Eliminates the need for special packaging.
 
-Servers can push required resource packs the client is forced to apply. Declining them or toggling required server resource pack(s) is impossible on vanilla client. And fake accepting them can be detectable via key resolution probing the client's resource pack key response.
+The server can print utility packages that the client can download. Vanilla users cannot delete or modify critical server packages. We hebben ook extra beheerfunctie with which u de responseies van uw klanten op uw besteuerungspakketten kunt volgen en vody invoicen kunt detecteren.
+Minecraft can also get this package, but OpSec allows you to install it at the server level. Save the file locally so that the server can use the translation key to verify that the package is installed (for example: "{"translation://some.pack.key.") The package key is returned after the server has successfully started.
+When you install Opsec, the default options are used to configure the server configuration. You can switch between styles and decorations.
 
-Minecraft still accepts and downloads these packs as normal but OpSec lets you toggle the pack textures at the client level. The language file of the server resource pack is preserved because servers can probe translation keys (e.g. via `{"translate": "some.pack.key"}`) to detect whether the pack is actually applied, and a vanilla client with the pack loaded would resolve those keys to the pack-defined value.
-
-With Opsec installed, server resource pack(s) appears as a normal user-toggleable entry in the resource pack menu so you can flip between stripped and fully-loaded.
-
-**Modes:**
-- **MANUAL** (default): Required packs apply fully like vanilla on push. Optional packs follow vanilla toggle semantics. The user can still unequip any server pack from the pack menu to strip it while keeping lang loaded.
-- **ASK**: Required packs are stripped on push and a consent overlay prompts `[Continue]` / `[Load Pack For Real]`.
-- **ALWAYS ON**: All server packs are stripped on push. No overlay. You can still toggle them back.
-
+**when:**
+- **manual** (default): works after installing many vanilla packages. The selection process is done after analyzing the impact. Users can open the administration window by selecting the server package from the menu.
+- **Sigh**. If the guide doesn't work, please set "[Continue]/[Download First Package]".
+- **Note**: All server packages are locked. Nothing came back.
 
 ---
 
-### Strip Mod Shader Overrides
+### Remove the sensor module from the controller.
 
-Some mods (e.g. [Meteor Client](https://github.com/MeteorDevelopment/meteor-client)) render their GUI with their own shaders loaded through Minecraft's resource manager. A forced server resource pack can overide the mod's own files to ship shaders under that mod to either blank the mod's GUI, crash the client with malformed shaders, or GPU DoS, which also fingerprints that the mod is installed.
-
-OpSec strips shader overrides under `assets/<mod>/shaders/` from server packs for any installed mod that isn't whitelisted, so the resource manager falls back to the mod's own bundled shaders. The rest of the pack still loads, so this keeps working even when a server forces the pack to make [Bypass Server Pack Requirement](#bypass-server-pack-requirement) unusable.
-
-Vanilla (`minecraft`) shaders are never touched, and whitelisting a mod lets the server's shader override through.
+Some versions (eg [Meteor Client](https://github.com/MeteorDevelopment/meteor-client)) have their own shadows that can be downloaded from the Minecraft Legacy Manager. Appropriate server security packages can modify Shadow to monitor client processes using GPU fingerprinting or a DoS bag.
+For other modifications, OpSec Server removes the shader from "set/<mod>/shaders/" and improves the search for the shader modification. Other packages will be downloaded, so if you need a server package, select Remove for the required server package (
+There are no changes to the main theme (Minecraft). A musician can be free.
 
 ---
 
-### Key Resolution Protection
+### Basic services
 
-Servers can send translatable text containing keys like `key.attack` or `key.hide_icons` in any server packet to probe which keys you have bound or mod UI elements your client can resolve. This can reveal the client's installed mods.
+The server can send unique messages to each cell using keys such as "key.attack" or "key.hide_icons" to identify individual keys and UIs that the client can change. You can carry out the installation process manually.
 
-https://wurst.wiki/sign_translation_vulnerability
+https://vurst.wiki/sign_translation_vulnerability
 
-OpSec tracks when translation keys are being resolved during server packet processing and blocks Minecraft from resolving them based on your selected brand mode:
+OpSec servers support key theft while logging in and listening using the popular Minecraft example:
 
-#### Spoof as Vanilla Behavior
+#### Like a fake vanilla pod
 
-- **ON**: Blocks all mod keys, returns default keybind values for vanilla keys
-- **OFF**: Allows Fabric API and whitelisted mod keys, blocks everything else
+- **Enable** Disables keyboard shortcuts and enables custom keyboard and default keyboard
+- **Administrator** Allow API access and whitelist protection. Things work.
 
-When **Fake Default Keybinds** is disabled, vanilla keybinds resolve to their actual values.
+**Default Keyboard** If this option is not present, the default keyboard is the default keyboard.
 
-#### Examples
+#### For example:
 
-Spoofing mod keybinds (Returns raw keys/fallback value instead of keybind values):
+Creates an input type (returns a string value without wrapping/wrapping the value).
+
+"
+[kei.meteor-client.open-commands] '.' Key "kei.meteor-client.open-commands"
+[kei.meteor-client.open-gui] "Move right" → "kei.meteor-client.open-gui"
+"
+
+Add ** dual keyboards ** (reusable keyboard) to create a simple keyboard.
+
+»
+[key.hotbar.6] "C" → "6"
+[key.hotbar.7] "Yes" → "7"
+[key.hotbar.8] "R" → "8"
+»
+
+---
+
+### Strong asteroids
+
+Mattek's daily warranty system exists to get the best warranty for using the end table.
+
+The server can use any value to confirm the new password. Vanilla users expect larger keys. There may be other ideas. The Meteor client requires primary keys to be returned, not server values.
+
+If the server uses a parameter that conflicts with the meteor value:
+
 ```
-[key.meteor-client.open-commands] '.'→'key.meteor-client.open-commands'
-[key.meteor-client.open-gui] 'Right Shift'→'key.meteor-client.open-gui'
+Right-click .meteor-client.open-gui → key.meteor-client.open-gui
 ```
 
-Spoofing vanilla keybinds with **Fake Default Keybinds** enabled (Returns default keybinds):
+<img vidth="847" height="107" alt="image" src="https://github.com/user-attachments/assets/e157ae3f-6beb-4823-aca0-9c61573264e2"/>
+
+How much vanilla?
 ```
-[key.hotbar.6] 'Q'→'6'
-[key.hotbar.7] 'E'→'7'
-[key.hotbar.8] 'R'→'8'
-```
-
----
-
-### Meteor Fix
-
-Legacy Meteor client a built-in key protection implementation which can lead to guaranteed detection with the key resolution probing.
-
-The server can use a specially crafted translation key probe with a fallback value, instead of expecting the raw key from a vanilla client, its expecting the fallback value instead. Meteor client echos the raw key back instead of the server probe's fallback value.
-
-When the server uses a sign exploit with fallback value on Meteor Client:
-```
-'key.meteor-client.open-gui' 'Right Shift'→'key.meteor-client.open-gui'
+'key.meteor-client.open-gui' '⟦ROLLBACK⟧' → 'ALLBACK⟧'
 ```
 
-<img width="847" height="107" alt="image" src="https://github.com/user-attachments/assets/e157ae3f-6beb-4823-aca0-9c61573264e2" />
-
-What a Vanilla response would actaully be:
-```
-'key.meteor-client.open-gui' '⟦FALLBACK⟧'→'⟦FALLBACK⟧'
-```
-OpSec's bandaid fix for Meteor is to blacklist the `AbstractSignEditScreenMixin` Mixin to disable Meteor's broken key resolution protection. Allowing OpSec's protection to take over, which already handle fallbacks correctly to match the Vanilla response.
-
-<img width="901" height="107" alt="image" src="https://github.com/user-attachments/assets/506b9c73-6747-40f8-9a56-52c0353034b4" />
+The built-in Meteor opsec solution is to write a combination of signature and digest to remove broken Meteor web pages. Secure your shared solutions by enabling Opsec security.
 
 ---
 
-### ExploitPreventer Compatibility
+### As a defense against tyranny
 
-For users that prefers [ExploitPreventer](https://github.com/NikOverflow/ExploitPreventer)'s core protection implementation but still need OpSec's additional features, both can be installed alongside each other. Overlapping features are automatically disabled to let EP handle them, note that you would lose OpSec features such as channels spoofing. The following OpSec features are deferred to EP:
+Users who like the simplicity of ExploitPreventer but also want additional OpSec features can install ExploitPreventer. You can easily turn ON/OFF with EP operation. Note that there are no OpSec features such as emulation. OpSec functionality is defined in the AG.
 
-- [Brand Spoofing](#brand-spoofing)
-- [Channel Spoofing](#channel-spoofing)
-- [Known-Pack Filtering](#known-pack-filtering)
-- [Isolate Pack Cache](#isolate-pack-cache)
-- [Block Local URLs](#block-local-urls)
-- [Key Resolution Protection](#key-resolution-protection)
-- [Mod Whitelist](#mod-whitelist)
+- [answer]
+- [function]
+- [disappear]
+- [Licensing System]
 
-These settings are grayed out in the config screen but your saved preferences are preserved. If you remove EP later, they restore automatically.
+The settings on the settings screen are reduced, but the saved settings remain. If you delete the EP, it will reappear.
 
-Features that don't overlap remain fully functional: alerts, chat signing, account manager, telemetry blocking, [Strip Mod Shader Overrides](#strip-mod-shader-overrides), and [Meteor Fix](#meteor-fix).
+All services are free: messaging, chat, account management, call blocking
 
 ---
 
-### Channel Spoofing
+### scam
 
-Servers can query your registered network channels to detect which mods you have installed.
+The server can search the registration page to see if the plugin is installed.
 
-OpSec can conditionally block mod channels that are registered with the server to prevent detection.
-This is enabled by default, its behavior is controlled by the mod whitelist and 
-
----
-
-### Known-Pack Filtering
-
-Servers can probe your mod-injected pack identifiers that certain mods exposes to detect whether you're running a modded client or using certain mods. 
-OpSec intercepts the outgoing `ServerboundSelectKnownPacks` response and strips entries belonging to non-whitelisted mods. Real vanilla and auto whitelisted packs still pass through.
-
-#### Spoof as Vanilla Behavior
-
-- **ON**: Strips all mod-injected packs.
-- **OFF**: Keeps packs for whitelisted mods, strips the rest.
-
-> [!NOTE]
-> Only active on clients where Fabric's known-packs hook is present (MC 1.21.11+ with modern fabric-api).
+Public networks can be blocked on OpSec servers to protect information.
+Generally, groups can be selected.
 
 ---
 
-### Mod Whitelist
+### The bag is easy to clean
 
-Some mods require server communication to function properly (e.g., VoiceChat, Xaero's Minimap quick travel). The whitelist allows you to exempt specific mods from channel spoofing, key resolution protection, known-pack filtering, and shader override stripping.
+The center can check whether the customer is using or changing the values provided by the integrated system.
+OPSC protects against external influences from SurroundSelectnonPack and unknown packets. Special packages and special licenses are available.
 
-<img width="853" height="478" alt="whitelist settings menu" src="https://github.com/user-attachments/assets/6ae423de-dd98-47c1-a617-f6df747c9293" />
+#### The problem is common.
 
-**Modes:**
-- **OFF**: All mod content is blocked
-- **AUTO** (default): Mods that register network channels are automatically whitelisted as they are the most likely to have server-side functionalities
-- **CUSTOM**: Manually select which mods to whitelist from the installed mod list
+- **ON**: Disables all injection.
+- **Banning**: Keep packages clean and remove other packages.
 
-When the whitelist is active (AUTO or CUSTOM), [Spoof as Vanilla](#spoof-as-vanilla) will be disabled as exposing Fabric mods would need the client brand to match accordingly.
-
-> [!NOTE]
-> CUSTOM mode lists every installed mod so any mod can be whitelisted; AUTO mode only shows mods that register network channels.
+> [! please tell me]
+> For consumers who know the source package name (for example, Fabric API in MC 1.21.11).
 
 ---
 
-### Chat Signing Control
+### In a sense.
 
-Based on [No Chat Reports](https://modrinth.com/mod/no-chat-reports).
+Some features require a connection to the service (for example, there are color options. You can turn off the shadow.
 
-Cryptographic signatures by default are attached to every chat messages. Removing them makes it impossible to track and associate your chat messages with your Minecraft client, and, by extension, Microsoft account.
+<img width='853' height='478' alt='Flash Settings Menu' src='https://github.com/user-attachments/assets/6ae423de-dd98-47c1-a617-f6df747c9293'/>
 
-**Modes:**
-- **OFF**: Strip all chat signatures, but prevents you from chatting in servers that enforces secure chat.
-- **Auto**: Only sign messages when the server enforces secure chat.
-- **ON**: Default Minecraft behavior, signs every messages.
+#### **Main Page:**
 
----
+- **Hold** Delete all responses
+- **On** (default): the program used is displayed on the server's activity page.
+- **Secret**. Manually select the template you want from the list of installed templates.
 
-### Account Manager
+If whitelisting is enabled (automatic or manual) [non-normal]
 
-Based on [Meteor Client](https://github.com/MeteorDevelopment/meteor-client).
+> [! cell phone]
+> Default Mode Displays the default mode. You can set the desired operating mode. Embedded mode is the only way to connect to the network.
 
-Add Minecraft accounts with session tokens and switch between them without restarting the game. 
+### Restrict access to chat.
 
-- **Session Token Login** - Add accounts using access tokens 
-- **Refresh Token** - Fetch new session tokens for expired accounts
-- **Offline Account** - Add username-only accounts without authentication
-- **Account Switching** - Click an account to login, click again to logout to original account
-- **Token Validation** - Refresh to check if tokens are still valid (expired tokens marked red)
-- **Import/Export** - Backup and restore accounts via JSON files
+[No Chat Reports](https://modrinth.com/mod/no-chat-reports).
 
-> [!NOTE]
-> Session tokens expire after some time. Use the Refresh button to check validity.
+All chat messages are encrypted. If you delete a conversation, Minecraft users with a Microsoft account won't be able to contact you or follow you.
 
----
-
-### Telemetry Blocking
-
-From [No Chat Reports](https://modrinth.com/mod/no-chat-reports).
-
-Minecraft collects and sends telemetry data to Mojang, including:
-- Game events and player actions
-- Performance metrics
-- Client configuration
-- Usage statistics
-
-OpSec blocks telemetry sending to Mojang when telemetry blocking is enabled. Does not effect gameplay.
+**Meaning:**
+- **Delete***: Delete all chat records. But it blocks chats due to abuse on secure servers.
+- *** head ***: Message sent when the server opens a security session.
+- **Activity**: Works fine in Minecraft, all emails are signed.
 
 ---
 
+### make out
 
-## Building from Source
+By [Meteor Client](https://github.com/MeteorDevelopment/meteor-client).
 
-### Prerequisites
+You can add stories and locations to Minecraft and edit them without starting the game.
 
-- **Java 17** (1.20.1 – 1.20.4), **Java 21** (1.20.6 – 1.21.11), **Java 25** (26.1+)
-- **Gradle** (included via wrapper)
+- ** Log in to token operation ** - Account and token login
+- **License Renewal** - Get a new license to use an expired account.
+- **Register Online*** - Enter your username without verification.
+- **Edit Account**: Click to access your account. Click again to log out of your main account.
+- **Confirm Token**: Scan the token again for it to work. (All icons are displayed in red)
+- **Import/Export**: Save your account and export as a JSON file.
 
-### Building the Minecraft Mod
+> [! send a message]
+> Available in few hours. Use the Update button to check availability.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/aurickk/OpSec.git
-   cd OpSec
+---
+
+### far away from each other
+
+[No Chat Reports](https://modrinth.com/mod/no-chat-reports).
+
+Minecraft collects and sends mobile data to Mojang, including:
+- Games and activities
+- Good luck
+- User training
+- How to use numbers
+
+When telemetry blocking is enabled, OpSec prevents telemetry data from being transmitted to Mojang. It does not affect the game.
+
+---
+
+## Gather information from sources
+
+### career
+
+- ** Java 17 **(1.20.1-1.20.4), ** Java 21 **(1.20.6-1.21.11), ** Java 25 ***(1.26)
+- ** Rating ** (Total)
+
+### Make Minecraft mods.
+
+1. **Religious School**
    ```
-
-2. **Build all versions**
-   ```bash
-   # Windows
-   .\gradlew.bat build
-   
-   # Linux/Mac
-   ./gradlew build
+   Mr cloner is provided at https://github.com/aurickk/OpSec.git
+   To protect the back side of the plate
    ```
+2. **Apply all changes**
+    - I'm lost.
+3. **work**
+   "It's a fire
 
-3. **Build a specific version**
-   ```bash
-   # Build for a specific version
-   ./gradlew :1.20.1:build
-   ./gradlew :1.20.2:build
-   ./gradlew :1.20.4:build
-   ./gradlew :1.20.6:build
-   ./gradlew :1.21.1:build
-   ./gradlew :1.21.4:build
-   ./gradlew :1.21.6:build
-   ./gradlew :1.21.9:build
-   ./gradlew :1.21.11:build
-   ./gradlew :26.1:build
-   ./gradlew :26.2:build
-   ```
+The JAR file is located in /<version_minecraft>/build/libs/:
 
-Output JARs are located in `versions/<minecraft_version>/build/libs/`:
-| Build Version | Supports |
-|---------------|----------|
-| 1.20.1 | 1.20 – 1.20.1 |
-| 1.20.2 | 1.20.2 |
-| 1.20.4 | 1.20.3 – 1.20.4 |
-| 1.20.6 | 1.20.5 – 1.20.6 |
-| 1.21.1 | 1.21 – 1.21.1 |
-| 1.21.4 | 1.21.2 – 1.21.5 |
-| 1.21.6 | 1.21.6 – 1.21.8 |
-| 1.21.9 | 1.21.9 – 1.21.10 |
-| 1.21.11 | 1.21.11 |
-| 26.1 | 26.1 – 26.1.2 |
-| 26.2 | 26.2 |
+| Create support options |                  |
+|------------------------|------------------|
+| 1.20.1                 | 1.20 - 1.20.1    |
+| 1.20.2                 | 1.20.2           |
+| 1.20.4                 | 1.20.3 - 1.20.4  |
+| 1.20.6                 | 1.20.5 - 1.20.6  |
+| 1.21.1                 | 1.21 - 1.21.1    |
+| 1.21.4                 | 1.21.2 - 1.21.5  |
+| 1.21.6                 | 1.21.6 - 1.21.8  |
+| 21.1.9                 | 21.1.9 - 21.1.10 |
+| 21.01.21               | 01.11            |
+| 26.1                   | 26.1 - 26.1.2    |
+| 26.2                   | 26.2             |
 
+---
 
-## References
+## You should be happy
 
-- [ExploitPreventer](https://github.com/NikOverflow/ExploitPreventer) - Local URL blocking and server key resolution protection anti-measures
-- [LiquidBounce](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/java/net/ccbluex/liquidbounce/injection/mixins/minecraft/util/MixinDownloadQueue.java) - Cached server resource pack isolation
-- [Meteor Client](https://github.com/MeteorDevelopment/meteor-client) - Session token sign in
-- [No Chat Reports](https://modrinth.com/mod/no-chat-reports) - Chat signing control and telemetry blocking
-- [No Prying Eyes](https://github.com/Daxanius/NoPryingEyes?tab=readme-ov-file) - Secure chat enforcement detection
-- [MixinSquared](https://github.com/Bawnorton/MixinSquared) - Mixin cancellation for Meteor Fix
-- [Stonecutter](https://stonecutter.kikugie.dev/) - Multi-version build system
-- [Fabric API](https://github.com/FabricMC/fabric-api) - Fabric translation and keybind keys
+- [ExploitPreventer](https://github.com/NikOverflow/ExploitPreventer) - Includes URL blocking and attack protection.
+- [LiquidBounce](https://github.com/CCBlueX/LiquidBounce/blob/nextgen/src/main/java/net/ccbluex/liquidbounce/injection/mixins/inecraft/util/MixinDownloadQueue.java) - Create server.
+- [Meteor Client](https://github.com/MeteorDevelopment/meteor-client) - Enter your username.
+- [No Chat Reports](https://modrinth.com/mod/no-chat-reports) - Manage chat reports and chat limits.
+- [NoPryingEyes](https://github.com/Daxanius/NoPryingEyes?tab=readme-ov-file) - Cat Security Overview
+- [MixinSquared](https://github.com/Bawnorton/MixinSquared) - Use Mixin to modify asteroids 
+- [Stonecutter](https://stonecutter.kikugie.dev/) - Create more systems
+- [Fabric API](https://github.com/FabricMC/fabric-api) - Fabric and basic definitions.
 
-## Disclaimer
+---
 
-OpSec is a privacy tool designed to protect players from unwanted client fingerprinting and tracking. It is not intended or encouraged for use in bypassing server rules, evading bans, or gaining unfair advantages. Users are responsible for complying with the rules and terms of service of any server they connect to.
+## Know
+
+OpSec is a key security measure that allows actors to detect and identify unauthorized users. Not used to generate server errors. First: Unauthorized access or fraud. Users of our services are responsible for their own actions.
