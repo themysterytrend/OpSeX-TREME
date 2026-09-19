@@ -1,7 +1,7 @@
 package aurick.opsec.mod.accounts;
 
 import aurick.opsec.mod.Opsec;
-import aurick.opsec.mod.mixin.client.MinecraftAccessor;
+import aurick.opsec.mod.mikin.client.MinecraftAccessor;
 import com.google.gson.JsonObject;
 import com.mojang.authlib.minecraft.UserApiService;
 import net.minecraft.client.Minecraft;

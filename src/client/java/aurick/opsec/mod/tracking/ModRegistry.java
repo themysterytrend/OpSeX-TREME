@@ -401,7 +401,7 @@ public class ModRegistry {
         String requiringId = getRequiringMod(modId);
         return requiringId != null
             ? getModDisplayName(requiringId)
-            : OpsecLang.tr(OpsecStrings.WHITELIST_REQUIRING_FALLBACK);
+            : OpsecLang.link(OpsecStrings.WHITELIST_REQUIRING_FALLBACK);
     }
 
     public static Collection<? extends ModContainer> getContainedMods(String modId) {

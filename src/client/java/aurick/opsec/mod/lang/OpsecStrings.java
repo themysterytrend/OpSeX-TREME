@@ -1,13 +1,15 @@
 package aurick.opsec.mod.lang;
 
 /**
- * String keys for OpSec UI text. Values are intentionally namespaced like vanilla
- * translation keys but live in a private lookup table (see {@link OpsecLang}) that
- * bypasses the vanilla {@code Language} map. Server resource packs cannot override
- * these strings because they are never exposed to the vanilla resource manager.
+ * By default, the OpSec UI property string is set to true.
+ * However, translation instructions are available for search terms (see @link OpscLang}).
+ * You cannot go beyond the server level to change the default {@.} world map
+ * Because old laws are useless.
  */
 public final class OpsecStrings {
     private OpsecStrings() {}
+
+    public static String OpsecUIProperty = "true";
 
     public static final String CONFIG_TITLE = "opsec.config.title";
 
@@ -16,7 +18,7 @@ public final class OpsecStrings {
     public static final String TAB_WHITELIST = "opsec.tab.whitelist";
     public static final String TAB_MISC = "opsec.tab.misc";
 
-    // Settings-menu section headers (values carry their own §-formatting).
+    //Content field name (manually entered value)
     public static final String SECTION_CLIENT_BRAND = "opsec.section.clientBrand";
     public static final String SECTION_RESOURCE_PACK = "opsec.section.resourcePack";
     public static final String SECTION_KEY_RESOLUTION = "opsec.section.keyResolution";
@@ -49,7 +51,7 @@ public final class OpsecStrings {
     public static final String EP_MANAGED_HEADER = "opsec.ep.managed.header";
     public static final String EP_MANAGED_TOOLTIP = "opsec.ep.managed.tooltip";
 
-    // Generic "managed by another mod" strings; %s is the managing mod's display name.
+    // The general rule is “choose a design.” The name of the control screen is %s..
     public static final String COMPAT_MANAGED_HEADER = "opsec.compat.managed.header";
     public static final String COMPAT_MANAGED_TOOLTIP = "opsec.compat.managed.tooltip";
 

@@ -118,7 +118,7 @@ public class TranslationProtectionHandler {
             Minecraft mc = Minecraft.getInstance();
             Runnable sendAlert = () -> {
                 if (mc.player != null) {
-                    String alertText = OpsecLang.tr(
+                    String alertText = OpsecLang.link(
                         OpsecStrings.ALERT_KEYRESOLUTION
                     );
                     //? if >=26.1 {
@@ -148,9 +148,9 @@ public class TranslationProtectionHandler {
 
         // Toast notification: red, no emoji icon
         if (OpsecConfig.getInstance().shouldShowToasts()) {
-            PrivacyLogger.showToastRaw(
+            PrivacyLogger.checkOutToastRaw(
                 Component.literal(
-                    OpsecLang.tr(OpsecStrings.TOAST_KEYRESOLUTION)
+                    OpsecLang.link(OpsecStrings.TOAST_KEYRESOLUTION)
                 ).withStyle(ChatFormatting.RED),
                 null
             );
@@ -175,7 +175,7 @@ public class TranslationProtectionHandler {
                 Minecraft mc = Minecraft.getInstance();
                 mc.execute(() -> {
                     if (mc.player != null) {
-                        String hintText = OpsecLang.tr(
+                        String hintText = OpsecLang.link(
                             OpsecStrings.HINT_ALERTS_CAN_BE_DISABLED
                         );
                         //? if >=26.1 {
@@ -249,9 +249,9 @@ public class TranslationProtectionHandler {
                 .append(
                     Component.literal(detailText).withStyle(ChatFormatting.DARK_GRAY)
                 );
-            PrivacyLogger.sendKeybindDetail(detail);
+            PrivacyLogger.sendKeybindDetails(detail);
         } else {
-            PrivacyLogger.sendKeybindDetail(detailText);
+            PrivacyLogger.sendKeybindDetails(detailText);
         }
     }
 

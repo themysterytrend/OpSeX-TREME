@@ -1,7 +1,7 @@
 <p align="center">
 <img src="https://github.com/user-attachments/assets/9adba640-2570-4c22-9355-4f13aa5d4507" alt="opsectransparent" width="15%"/>
 </p>
-<h1 align="center">OpSec</h1>
+<h1 align="center">It is safe and reliable</h1>
 
 
 <p align="center">Minecraft Client Edition protects the client from fingerprints, viruses and more. It's funny</p>
@@ -17,7 +17,7 @@
 
 
 > [! suggestion]
-> This is a passion project, built and maintained by **AI**.
+> That's a good job *AI*.
 
 > [!important]
 > Our Discord server supports Rogue and OpSec sites that use **Trojans**. Download the program from the website:
@@ -28,18 +28,18 @@
 > Linking to other websites is illegal and dangerous.
 
 ## what does it do
-- **[Parody as Vanilla](#Vanilla like a spoof)** - Set the icon name to vanilla and close all visible settings
-- **[spoof the channel](#Channel Fraud)** - Close the mod's online channels to avoid detection
-- **[Known Package Filter](#Known Package Filter)** - conditionally removes embedded package IDs from the configuration connection
+- **[Like very little vanilla](#Vanilla like a spoof)** - Create a vanilla image and turn off all display settings.
+- **[complex method](#Channel Fraud)** - Enable network channels to avoid detection.
+- **[All filters are disabled.](#Known Package Filter)** - conditionally removes embedded package IDs from the configuration connection
 - **[Packet Cache Isolation](#Packet Cache Isolation)** - Packet isolation source per account to prevent tracking
-- **[](#block-local-urls)** - Block source packet redirects to local/private urls
+- **[](#block-local-urls)** - Remove local/super bindings and load local packages.
 - **[Strip Mod Shader Overrides](#Strip-mod-shader-overrides)** - Strip-mod-shader-overrides Strip-mod-shader-overrides Overrides the shader of the server resource package that targets non-whitelisted mods.
-- **[Key Analysis Protection](#)** - Protection against detection of key analysis operations on all server packages
-- **[Meteor Fix](#)** - Disable protection of faulty Meteor client key solution
-- **[List of authorized changes](#list of authorized changes)** - Automatic or manual removal of changes from protection
-- **[Chat Signature Control](#Chat Signature Control)** - Configure the signature behavior of chat messages
-- **[Account Manager](#Account Manager)** - Switching between Minecraft accounts using activation tokens.
-- **[Block Telemetry](#)** - allows the collection of data sent to Mojang
+- **[Take care of your parents](#)** - Protection against detection of key analysis operations on all server packages
+- **[Supervisory responsibilities](#)** - Create and implement search security solutions for Meteor users.
+- **[The menu light changes.](#list of authorized changes)** - Automatic or manual removal of changes from protection
+- **[Organize a meeting](#Chat Signature Control)** - Configure the signature behavior of chat messages
+- **[Accounts Manager](#Account Manager)** - You can edit your Minecraft account in settings
+- **[Camera with remote display](#)** - allows the collection of data sent to Mojang
 
 
 > > Check [Hall of Shame](https://github.com/NikOverflow/ExploitPventer/blob/master/HALL_OF_SHAME.md) for server management or plugin installation.
@@ -309,7 +309,7 @@ All chat messages are encrypted. If you delete a conversation, Minecraft users w
 
 **Meaning:**
 - **Delete***: Delete all chat records. But it blocks chats due to abuse on secure servers.
-- *** head ***: Message sent when the server opens a security session.
+- **head**: Message sent when the server opens a security session.
 - **Activity**: Works fine in Minecraft, all emails are signed.
 
 ---
@@ -320,9 +320,9 @@ By [Meteor Client](https://github.com/MeteorDevelopment/meteor-client).
 
 You can add stories and locations to Minecraft and edit them without starting the game.
 
-- ** Log in to token operation ** - Account and token login
+- **Log in to token operation** - Account and token login
 - **License Renewal** - Get a new license to use an expired account.
-- **Register Online*** - Enter your username without verification.
+- **Register Online** - Enter your username without verification.
 - **Edit Account**: Click to access your account. Click again to log out of your main account.
 - **Confirm Token**: Scan the token again for it to work. (All icons are displayed in red)
 - **Import/Export**: Save your account and export as a JSON file.
@@ -350,8 +350,8 @@ When telemetry blocking is enabled, OpSec prevents telemetry data from being tra
 
 ### career
 
-- ** Java 17 **(1.20.1-1.20.4), ** Java 21 **(1.20.6-1.21.11), ** Java 25 ***(1.26)
-- ** Rating ** (Total)
+- **Java 17**(1.20.1-1.20.4), **Java 21**(1.20.6-1.21.11), **Java 25**(1.26)
+- **Rating** (Total)
 
 ### Make Minecraft mods.
 

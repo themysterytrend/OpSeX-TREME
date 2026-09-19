@@ -89,10 +89,10 @@ public class OpsecCommand {
     private static int showHelp(CommandContext<FabricClientCommandSource> ctx) {
         FabricClientCommandSource source = ctx.getSource();
         
-        source.sendFeedback(header(OpsecLang.tr(OpsecStrings.COMMAND_HELP_HEADER)));
+        source.sendFeedback(header(OpsecLang.link(OpsecStrings.COMMAND_HELP_HEADER)));
         source.sendFeedback(Component.empty());
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_HELP_INFO)));
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_HELP_CHANNELS)));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_HELP_INFO)));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_HELP_CHANNELS)));
         
         return 1;
     }
@@ -138,23 +138,23 @@ public class OpsecCommand {
             entries.add(modEntry(mod.getMetadata().getName(), counts));
         }
 
-        source.sendFeedback(header(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_HEADER)));
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_TOTAL_MODS, entries.size())));
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_VANILLA_KEYS, ModRegistry.getVanillaKeyCount())));
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_SERVER_KEYS, ModRegistry.getServerPackKeyCount())));
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_TOTAL_KEYS, ModRegistry.getTranslationKeyCount())));
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_TOTAL_KEYBINDS, ModRegistry.getKeybindCount())));
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_TOTAL_SHADERS, ModRegistry.getShaderCount())));
+        source.sendFeedback(header(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_HEADER)));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_TOTAL_MODS, entries.size())));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_VANILLA_KEYS, ModRegistry.getVanillaKeyCount())));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_SERVER_KEYS, ModRegistry.getServerPackKeyCount())));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_TOTAL_KEYS, ModRegistry.getTranslationKeyCount())));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_TOTAL_KEYBINDS, ModRegistry.getKeybindCount())));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_TOTAL_SHADERS, ModRegistry.getShaderCount())));
         // Known-packs total is only meaningful where the leak exists. Suppressed on hook-absent clients (same gate as /opsec info).
         if (ModRegistry.isKnownPacksHookPresent()) {
-            source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_TOTAL_KNOWN_PACKS, ModRegistry.getKnownPackCount())));
+            source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_TOTAL_KNOWN_PACKS, ModRegistry.getKnownPackCount())));
         }
 
         source.sendFeedback(Component.empty());
-        source.sendFeedback(subheader(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_MODS_HEADER)));
+        source.sendFeedback(subheader(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_MODS_HEADER)));
 
         if (entries.isEmpty()) {
-            source.sendFeedback(warning(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_NO_MODS)));
+            source.sendFeedback(warning(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_NO_MODS)));
         } else {
             for (MutableComponent entry : entries) {
                 source.sendFeedback(entry);
@@ -162,7 +162,7 @@ public class OpsecCommand {
         }
 
         source.sendFeedback(Component.empty());
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_OVERVIEW_USE_INFO)));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_OVERVIEW_USE_INFO)));
         
         return 1;
     }
@@ -175,14 +175,14 @@ public class OpsecCommand {
 
         Resolved resolved = findMod(modName);
         if (resolved == null) {
-            source.sendFeedback(error(OpsecLang.tr(OpsecStrings.COMMAND_INFO_NOT_FOUND, modName)));
-            source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_INFO_USE_LIST)));
+            source.sendFeedback(error(OpsecLang.link(OpsecStrings.COMMAND_INFO_NOT_FOUND, modName)));
+            source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_INFO_USE_LIST)));
             return 0;
         }
 
         String modId = resolved.modId();
-        source.sendFeedback(header(OpsecLang.tr(OpsecStrings.COMMAND_INFO_HEADER, resolved.displayName())));
-        source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_INFO_ID, modId)));
+        source.sendFeedback(header(OpsecLang.link(OpsecStrings.COMMAND_INFO_HEADER, resolved.displayName())));
+        source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_INFO_ID, modId)));
 
         // Aggregate includes JIJ descendants so meta jars (e.g. fabric-api) report children's content.
         renderContentSection(source, OpsecStrings.COMMAND_INFO_TRANSLATION_KEYS,
@@ -198,9 +198,9 @@ public class OpsecCommand {
         if (ModRegistry.isKnownPacksHookPresent()) {
             List<String> knownPacks = ModRegistry.aggregateAllKnownPackStrings(modId);
             source.sendFeedback(Component.empty());
-            source.sendFeedback(subheader(OpsecLang.tr(OpsecStrings.COMMAND_INFO_KNOWN_PACKS, knownPacks.size())));
+            source.sendFeedback(subheader(OpsecLang.link(OpsecStrings.COMMAND_INFO_KNOWN_PACKS, knownPacks.size())));
             if (knownPacks.isEmpty()) {
-                source.sendFeedback(dim(OpsecLang.tr(OpsecStrings.COMMAND_INFO_NONE)));
+                source.sendFeedback(dim(OpsecLang.link(OpsecStrings.COMMAND_INFO_NONE)));
             } else {
                 for (String pack : knownPacks) {
                     source.sendFeedback(listItem(pack));
@@ -213,9 +213,9 @@ public class OpsecCommand {
             .filter(child -> ModRegistry.getModInfo(child.getMetadata().getId()) != null)
             .toList();
         source.sendFeedback(Component.empty());
-        source.sendFeedback(subheader(OpsecLang.tr(OpsecStrings.COMMAND_INFO_JIJ, trackedContained.size())));
+        source.sendFeedback(subheader(OpsecLang.link(OpsecStrings.COMMAND_INFO_JIJ, trackedContained.size())));
         if (trackedContained.isEmpty()) {
-            source.sendFeedback(dim(OpsecLang.tr(OpsecStrings.COMMAND_INFO_NONE)));
+            source.sendFeedback(dim(OpsecLang.link(OpsecStrings.COMMAND_INFO_NONE)));
         } else {
             for (ModContainer child : trackedContained) {
                 source.sendFeedback(listItem(child.getMetadata().getId()));
@@ -241,16 +241,16 @@ public class OpsecCommand {
 
         if (directlyWhitelisted) {
             isAllowed = true;
-            statusText = OpsecLang.tr(whitelistMode == SpoofSettings.WhitelistMode.AUTO
+            statusText = OpsecLang.link(whitelistMode == SpoofSettings.WhitelistMode.AUTO
                 ? OpsecStrings.COMMAND_INFO_STATUS_ALLOWED_AUTO
                 : OpsecStrings.COMMAND_INFO_STATUS_ALLOWED_CUSTOM);
         } else if (ModRegistry.isInDependencyClosure(modId)) {
             isAllowed = true;
-            statusText = OpsecLang.tr(OpsecStrings.COMMAND_INFO_STATUS_ALLOWED_DEP,
+            statusText = OpsecLang.link(OpsecStrings.COMMAND_INFO_STATUS_ALLOWED_DEP,
                 ModRegistry.resolveRequiringModName(modId));
         } else {
             isAllowed = false;
-            statusText = OpsecLang.tr(switch (whitelistMode) {
+            statusText = OpsecLang.link(switch (whitelistMode) {
                 case AUTO -> OpsecStrings.COMMAND_INFO_STATUS_BLOCKED_AUTO;
                 case CUSTOM -> OpsecStrings.COMMAND_INFO_STATUS_BLOCKED_CUSTOM;
                 default -> OpsecStrings.COMMAND_INFO_STATUS_BLOCKED_OFF;
@@ -268,7 +268,7 @@ public class OpsecCommand {
     private static int showAllChannels(CommandContext<FabricClientCommandSource> ctx) {
         FabricClientCommandSource source = ctx.getSource();
         
-        source.sendFeedback(header(OpsecLang.tr(OpsecStrings.COMMAND_CHANNELS_HEADER)));
+        source.sendFeedback(header(OpsecLang.link(OpsecStrings.COMMAND_CHANNELS_HEADER)));
         
         int totalChannels = 0;
         for (ModRegistry.ModInfo info : ModRegistry.getAllMods()) {
@@ -298,11 +298,11 @@ public class OpsecCommand {
         }
         
         if (totalChannels == 0) {
-            source.sendFeedback(warning(OpsecLang.tr(OpsecStrings.COMMAND_CHANNELS_NONE)));
+            source.sendFeedback(warning(OpsecLang.link(OpsecStrings.COMMAND_CHANNELS_NONE)));
         } else {
             source.sendFeedback(Component.empty());
-            source.sendFeedback(info(OpsecLang.tr(OpsecStrings.COMMAND_CHANNELS_TOTAL, totalChannels)));
-            source.sendFeedback(dim(OpsecLang.tr(OpsecStrings.COMMAND_CHANNELS_LEGEND)));
+            source.sendFeedback(info(OpsecLang.link(OpsecStrings.COMMAND_CHANNELS_TOTAL, totalChannels)));
+            source.sendFeedback(dim(OpsecLang.link(OpsecStrings.COMMAND_CHANNELS_LEGEND)));
         }
         
         return 1;
@@ -367,15 +367,15 @@ public class OpsecCommand {
         int limit
     ) {
         source.sendFeedback(Component.empty());
-        source.sendFeedback(subheader(OpsecLang.tr(headerKey, items.size())));
+        source.sendFeedback(subheader(OpsecLang.link(headerKey, items.size())));
         if (items.isEmpty()) {
-            source.sendFeedback(dim(OpsecLang.tr(OpsecStrings.COMMAND_INFO_NONE)));
+            source.sendFeedback(dim(OpsecLang.link(OpsecStrings.COMMAND_INFO_NONE)));
             return;
         }
         int shown = 0;
         for (String item : items) {
             if (limit >= 0 && shown >= limit) {
-                source.sendFeedback(dim(OpsecLang.tr(OpsecStrings.COMMAND_INFO_MORE, items.size() - shown)));
+                source.sendFeedback(dim(OpsecLang.link(OpsecStrings.COMMAND_INFO_MORE, items.size() - shown)));
                 break;
             }
             source.sendFeedback(listItem(item));
@@ -426,19 +426,19 @@ public class OpsecCommand {
 
         List<String> details = new ArrayList<>();
         if (counts.translationKeys() > 0) {
-            details.add(OpsecLang.tr(OpsecStrings.COMMAND_MODENTRY_KEYS, counts.translationKeys()));
+            details.add(OpsecLang.link(OpsecStrings.COMMAND_MODENTRY_KEYS, counts.translationKeys()));
         }
         if (counts.keybinds() > 0) {
-            details.add(OpsecLang.tr(OpsecStrings.COMMAND_MODENTRY_KEYBINDS, counts.keybinds()));
+            details.add(OpsecLang.link(OpsecStrings.COMMAND_MODENTRY_KEYBINDS, counts.keybinds()));
         }
         if (counts.channels() > 0) {
-            details.add(OpsecLang.tr(OpsecStrings.COMMAND_MODENTRY_CHANNELS, counts.channels()));
+            details.add(OpsecLang.link(OpsecStrings.COMMAND_MODENTRY_CHANNELS, counts.channels()));
         }
         if (counts.knownPacks() > 0) {
-            details.add(OpsecLang.tr(OpsecStrings.COMMAND_MODENTRY_KNOWN_PACKS, counts.knownPacks()));
+            details.add(OpsecLang.link(OpsecStrings.COMMAND_MODENTRY_KNOWN_PACKS, counts.knownPacks()));
         }
         if (counts.shaders() > 0) {
-            details.add(OpsecLang.tr(OpsecStrings.COMMAND_MODENTRY_SHADERS, counts.shaders()));
+            details.add(OpsecLang.link(OpsecStrings.COMMAND_MODENTRY_SHADERS, counts.shaders()));
         }
 
         if (!details.isEmpty()) {

@@ -6,7 +6,7 @@ import aurick.opsec.mod.accounts.Account;
 import aurick.opsec.mod.accounts.SessionAccount;
 import aurick.opsec.mod.lang.OpsecLang;
 import aurick.opsec.mod.lang.OpsecStrings;
-import aurick.opsec.mod.mixin.MeteorMixinCanceller;
+import aurick.opsec.mod.mikin.MeteorMixinCanceller;
 import aurick.opsec.mod.protection.ResourcePackGuard;
 import aurick.opsec.mod.tracking.ModRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -211,10 +211,10 @@ public class OpsecConfigScreen extends Screen {
         List<AbstractWidget> widgets = new ArrayList<>();
 
         // Client Brand Section
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_CLIENT_BRAND)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_CLIENT_BRAND)));
 
         if (OpsecConfig.EXPLOIT_PREVENTER_LOADED) {
-            widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.EP_MANAGED_HEADER)));
+            widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.EP_MANAGED_HEADER)));
             widgets.add(createEPManagedToggle(OpsecLang.component(OpsecStrings.OPTION_SPOOF_AS_VANILLA)));
         } else {
             widgets.add(cycleBuilder(COLORED_BOOL_TO_TEXT, List.of(Boolean.TRUE, Boolean.FALSE), settings.isSpoofAsVanilla())
@@ -230,10 +230,10 @@ public class OpsecConfigScreen extends Screen {
         }
 
         // Resource Pack Protection Section
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_RESOURCE_PACK)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_RESOURCE_PACK)));
 
         if (OpsecConfig.EXPLOIT_PREVENTER_LOADED) {
-            widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.EP_MANAGED_HEADER)));
+            widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.EP_MANAGED_HEADER)));
             if (OpsecConfig.MC_VERSION_HAS_MULTI_PACK) {
                 widgets.add(createEPManagedToggle(OpsecLang.component(OpsecStrings.OPTION_ISOLATE_PACK_CACHE)));
             }
@@ -289,10 +289,10 @@ public class OpsecConfigScreen extends Screen {
           .build());
 
         // Key Resolution Protection Section
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_KEY_RESOLUTION)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_KEY_RESOLUTION)));
 
         if (OpsecConfig.EXPLOIT_PREVENTER_LOADED) {
-            widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.EP_MANAGED_HEADER)));
+            widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.EP_MANAGED_HEADER)));
             widgets.add(createEPManagedToggle(OpsecLang.component(OpsecStrings.OPTION_KEY_RESOLUTION_SPOOFING)));
         } else {
             widgets.add(cycleBuilder(COLORED_BOOL_TO_TEXT, List.of(Boolean.TRUE, Boolean.FALSE), settings.isTranslationProtectionEnabled())
@@ -326,14 +326,14 @@ public class OpsecConfigScreen extends Screen {
 
                 // Show warning only when setting differs from what was applied at startup
                 if (MeteorMixinCanceller.needsRestart(settings.isMeteorFix())) {
-                    widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_RESTART_WARNING)));
+                    widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_RESTART_WARNING)));
                 }
                 //?}
             }
         }
 
         // Privacy & Security Section
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_PRIVACY)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_PRIVACY)));
 
         // Tracks the "Managed by X" header most recently emitted so adjacent managed
         // controls sharing a manager don't repeat it; null once a real control breaks the run.
@@ -342,7 +342,7 @@ public class OpsecConfigScreen extends Screen {
         // Chat signing \u2014 defer to No Chat Reports / No Prying Eyes when present.
         if (OpsecConfig.CHAT_SIGNING_MANAGED_EXTERNALLY) {
             String manager = OpsecConfig.chatSigningManagerName();
-            widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.COMPAT_MANAGED_HEADER, manager)));
+            widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.COMPAT_MANAGED_HEADER, manager)));
             lastManagedHeader = manager;
             widgets.add(createManagedToggle(OpsecLang.component(OpsecStrings.OPTION_CHAT_SIGNING),
                     OpsecLang.component(OpsecStrings.COMPAT_MANAGED_TOOLTIP, manager)));
@@ -358,7 +358,7 @@ public class OpsecConfigScreen extends Screen {
             String manager = OpsecConfig.telemetryManagerName();
             // Reuse the header above when the control directly preceding shares this manager.
             if (!manager.equals(lastManagedHeader)) {
-                widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.COMPAT_MANAGED_HEADER, manager)));
+                widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.COMPAT_MANAGED_HEADER, manager)));
             }
             widgets.add(createManagedToggle(OpsecLang.component(OpsecStrings.OPTION_DISABLE_TELEMETRY),
                     OpsecLang.component(OpsecStrings.COMPAT_MANAGED_TOOLTIP, manager)));
@@ -376,7 +376,7 @@ public class OpsecConfigScreen extends Screen {
         List<AbstractWidget> widgets = new ArrayList<>();
         
         // Alerts & Logging Section
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_ALERTS)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_ALERTS)));
         
         widgets.add(cycleBuilder(COLORED_BOOL_TO_TEXT, List.of(Boolean.TRUE, Boolean.FALSE), settings.isShowAlerts())
                 .withTooltip(v -> Tooltip.create(OpsecLang.component(OpsecStrings.TOOLTIP_SHOW_ALERTS)))
@@ -394,7 +394,7 @@ public class OpsecConfigScreen extends Screen {
                 (button, value) -> { settings.setLogDetections(value); config.save(); }));
 
         // Debug Section
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_DEBUG)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_DEBUG)));
 
         widgets.add(cycleBuilder(COLORED_BOOL_TO_TEXT, List.of(Boolean.TRUE, Boolean.FALSE), settings.isDebugAlerts())
                 .withTooltip(v -> Tooltip.create(OpsecLang.component(OpsecStrings.TOOLTIP_DEBUG_ALERTS)))
@@ -414,15 +414,15 @@ public class OpsecConfigScreen extends Screen {
         AccountManager accountManager = AccountManager.getInstance();
         
         // Section header
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_ACCOUNTS)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_ACCOUNTS)));
         
         // Current account info
         String currentUser = Minecraft.getInstance().getUser().getName();
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.ACCOUNT_CURRENT, currentUser)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.ACCOUNT_CURRENT, currentUser)));
         
         // List saved accounts
         if (!accountManager.getAccounts().isEmpty()) {
-            widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_SAVED_ACCOUNTS)));
+            widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_SAVED_ACCOUNTS)));
             
             for (Account account : accountManager.getAccounts()) {
                 String displayName = account.getUsername() + (account.isCracked() ? " \u00A77(offline)" : "");
@@ -564,7 +564,7 @@ public class OpsecConfigScreen extends Screen {
         }
         
         // Add account section
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_ADD_ACCOUNT)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_ADD_ACCOUNT)));
         
         // Add button to open add account dialog
         widgets.add(Button.builder(OpsecLang.component(OpsecStrings.ACCOUNT_ADD_SESSION), button -> {
@@ -1040,10 +1040,10 @@ public class OpsecConfigScreen extends Screen {
         List<AbstractWidget> widgets = new ArrayList<>();
 
         // Section header
-        widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_MOD_WHITELIST)));
+        widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_MOD_WHITELIST)));
 
         if (OpsecConfig.EXPLOIT_PREVENTER_LOADED) {
-            widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.EP_MANAGED_HEADER)));
+            widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.EP_MANAGED_HEADER)));
             CycleButton<SpoofSettings.WhitelistMode> modeButton = cycleBuilder(WhitelistModeDisplay::getDisplayName, List.of(SpoofSettings.WhitelistMode.values()), SpoofSettings.WhitelistMode.OFF)
                     .withTooltip(v -> Tooltip.create(OpsecLang.component(OpsecStrings.EP_MANAGED_TOOLTIP)))
                     .create(0, 0, 230, 20, OpsecLang.component(OpsecStrings.OPTION_WHITELIST_MODE), (b, v) -> {});
@@ -1084,14 +1084,14 @@ public class OpsecConfigScreen extends Screen {
                     ModRegistry.ModInfo info = ModRegistry.getModInfo(modId);
                     boolean hasChannels = info != null && info.hasChannels();
                     if (hasChannels) {
-                        widgets.add(createSectionHeader("\u00A7a" + modName + OpsecLang.tr(OpsecStrings.WHITELIST_SUFFIX_CHANNELS, info.getChannels().size())));
+                        widgets.add(createSectionHeader("\u00A7a" + modName + OpsecLang.link(OpsecStrings.WHITELIST_SUFFIX_CHANNELS, info.getChannels().size())));
                     } else if (ModRegistry.isInDependencyClosure(modId)) {
-                        widgets.add(createSectionHeader("\u00A7a" + modName + OpsecLang.tr(OpsecStrings.WHITELIST_SUFFIX_REQUIRED)));
+                        widgets.add(createSectionHeader("\u00A7a" + modName + OpsecLang.link(OpsecStrings.WHITELIST_SUFFIX_REQUIRED)));
                     }
                 }
             } else if (settings.getWhitelistMode() == SpoofSettings.WhitelistMode.CUSTOM) {
                 // ON mode: existing manual toggle UI
-                widgets.add(createSectionHeader(OpsecLang.tr(OpsecStrings.SECTION_INSTALLED_MODS)));
+                widgets.add(createSectionHeader(OpsecLang.link(OpsecStrings.SECTION_INSTALLED_MODS)));
 
                 List<ModContainer> whitelistableMods = getWhitelistableMods();
                 widgets.add(new ToggleAllRowWidget(

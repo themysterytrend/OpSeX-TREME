@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "aurick.opsec.mod.mixin.client",
+	"package": "aurick.opsec.mod.mikin.client",
 	"refmap": "client-opsec.refmap.json",
 	"compatibilityLevel": "${mixin_compat_level}",
 	"client": [
@@ -25,7 +25,7 @@
 		"ServerboundChatPacketMixin",
 		"HttpUtilMixin",
 		"ClientLanguageAccessor",
-		"ClientLanguageMixin",
+		"ClientEnglishMikin",
 		"DeprecatedTranslationsInfoMixin",
 		"KeyBindingRegistryImplMixin",
 		"ResourceLoaderBuiltinPackMixin",${known_packs_mixin_entry}${payload_type_registry_mixin_entry}

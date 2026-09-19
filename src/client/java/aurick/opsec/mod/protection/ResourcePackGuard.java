@@ -2,8 +2,8 @@ package aurick.opsec.mod.protection;
 
 import aurick.opsec.mod.Opsec;
 //? if >=1.20.5 {
-import aurick.opsec.mod.mixin.client.DownloadedPackSourceAccessor;
-import aurick.opsec.mod.mixin.client.MinecraftAccessor;
+import aurick.opsec.mod.mikin.client.DownloadedPackSourceAccessor;
+import aurick.opsec.mod.mikin.client.MinecraftAccessor;
 //?}
 import net.minecraft.client.Minecraft;
 //? if >=1.20.3 {

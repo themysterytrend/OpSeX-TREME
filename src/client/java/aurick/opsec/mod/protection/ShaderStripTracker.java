@@ -64,15 +64,15 @@ public final class ShaderStripTracker {
         mods.sort(null);
 
         if (mods.size() == 1) {
-            PrivacyLogger.alert(PrivacyLogger.AlertType.DANGER,
-                OpsecLang.tr(OpsecStrings.ALERT_SHADER_STRIP, batch.get(0).getValue().size(), mods.get(0)));
+            PrivacyLogger.warningSigns(PrivacyLogger.AlertType.DANGER,
+                OpsecLang.link(OpsecStrings.ALERT_SHADER_STRIP, batch.get(0).getValue().size(), mods.get(0)));
         } else {
-            PrivacyLogger.alert(PrivacyLogger.AlertType.DANGER,
-                OpsecLang.tr(OpsecStrings.ALERT_SHADER_STRIP_MULTI, mods.size(), String.join(", ", mods)));
+            PrivacyLogger.warningSigns(PrivacyLogger.AlertType.DANGER,
+                OpsecLang.link(OpsecStrings.ALERT_SHADER_STRIP_MULTI, mods.size(), String.join(", ", mods)));
         }
         // Shared key → one toast even when several mods strip in one flush; also rate-limits re-strips.
         PrivacyLogger.toastWithCooldown(PrivacyLogger.AlertType.DANGER,
-            OpsecLang.tr(OpsecStrings.TOAST_SHADER_STRIP),
+            OpsecLang.link(OpsecStrings.TOAST_SHADER_STRIP),
             "shader_strip_toast", OpsecConstants.Timeouts.EXPLOIT_TOAST_COOLDOWN_MS);
     }
 
