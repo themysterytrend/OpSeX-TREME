@@ -1,7 +1,7 @@
 package aurick.opsec.mod.mixin.client;
 
 import aurick.opsec.mod.config.JarIntegrityChecker;
-import aurick.opsec.mod.config.TamperWarningScreen;
+import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.network.chat.Component;
@@ -24,19 +24,20 @@ public abstract class TitleScreenMixin extends Screen {
         super(title);
     }
 
+    @Inject(method = "init", at = @At("TAIL"))
+    private void opsex$onInit(CallbackInfo ci) {
+        this.addRenderableWidget(new StringWidget(Component.literal("Welcome to OPSEX-TREME"), this.font));
+    }
+
     @Inject(method = "tick", at = @At("TAIL"))
     private void opsec$pollIntegrityCheck(CallbackInfo ci) {
-        if (opsec$integrityHandled || !JarIntegrityChecker.isCheckComplete()) {
-            return;
-        }
-        opsec$integrityHandled = true;
-        if (this.minecraft != null && JarIntegrityChecker.isTamperDetected()) {
-            JarIntegrityChecker.markShown();
-            //? if >=26.2 {
-            /*this.minecraft.setScreenAndShow(new TamperWarningScreen(this));*/
-            //?} else {
-            this.minecraft.setScreen(new TamperWarningScreen(this));
-            //?}
-        }
+//        if (opsec$integrityHandled || !JarIntegrityChecker.isCheckComplete()) {
+//            return;
+//        }
+//        opsec$integrityHandled = true;
+//        if (this.minecraft != null && JarIntegrityChecker.isTamperDetected()) {
+//            JarIntegrityChecker.markShown();
+//
+//        }
     }
 }

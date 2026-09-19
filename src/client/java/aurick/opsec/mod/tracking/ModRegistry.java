@@ -11,11 +11,11 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.fabricmc.loader.api.metadata.ModDependency;
 //? if >=1.21.11 {
-/*import net.minecraft.resources.Identifier;
-*/
+import net.minecraft.resources.Identifier;
+
 //?} else {
-import net.minecraft.resources.ResourceLocation;
-//?}
+/*import net.minecraft.resources.ResourceLocation;
+*///?}
 
 import java.util.Collection;
 import java.util.Collections;
@@ -65,11 +65,11 @@ public class ModRegistry {
 
     /** Reverse index: channel -> mod ID for O(1) lookup (P7) */
     //? if >=1.21.11 {
-    /*private static final Map<Identifier, String> channelToModId = new ConcurrentHashMap<>();*/
+    private static final Map<Identifier, String> channelToModId = new ConcurrentHashMap<>();
     //?} else {
-    private static final Map<ResourceLocation, String> channelToModId =
+    /*private static final Map<ResourceLocation, String> channelToModId =
         new ConcurrentHashMap<>();
-    //?}
+    *///?}
 
     /** Transitive required-dep closure of all whitelisted mods. Prevents the "depender resolves, required dep doesn't" fingerprint. Volatile + atomic-swap for lock-free reads. */
     private static volatile Set<String> dependencyClosure =
@@ -106,10 +106,10 @@ public class ModRegistry {
         /** Namespace-qualified shaders the mod ships, e.g. "meteor-client:shaders/blur.vert". */
         private final Set<String> shaders = ConcurrentHashMap.newKeySet();
         //? if >=1.21.11 {
-        /*private final Set<Identifier> channels = ConcurrentHashMap.newKeySet();*/
+        private final Set<Identifier> channels = ConcurrentHashMap.newKeySet();
         //?} else {
-        private final Set<ResourceLocation> channels = ConcurrentHashMap.newKeySet();
-        //?}
+        /*private final Set<ResourceLocation> channels = ConcurrentHashMap.newKeySet();
+        *///?}
 
         public ModInfo(String modId, String displayName) {
             this.modId = modId;
@@ -133,10 +133,10 @@ public class ModRegistry {
         }
 
         //? if >=1.21.11 {
-        /*public Set<Identifier> getChannels() { return Collections.unmodifiableSet(channels); }*/
+        public Set<Identifier> getChannels() { return Collections.unmodifiableSet(channels); }
         //?} else {
-        public Set<ResourceLocation> getChannels() { return Collections.unmodifiableSet(channels); }
-        //?}
+        /*public Set<ResourceLocation> getChannels() { return Collections.unmodifiableSet(channels); }
+        *///?}
 
         public boolean hasTranslationKeys() {
             return !translationKeys.isEmpty();
@@ -1029,10 +1029,10 @@ public class ModRegistry {
      * Record a network channel registered by a mod.
      */
     //? if >=1.21.11 {
-    /*public static void recordChannel(String modId, Identifier channel) {*/
+    public static void recordChannel(String modId, Identifier channel) {
     //?} else {
-    public static void recordChannel(String modId, ResourceLocation channel) {
-    //?}
+    /*public static void recordChannel(String modId, ResourceLocation channel) {
+    *///?}
         if (modId == null || channel == null) return;
 
         ModInfo info = getOrCreateModInfo(modId);
@@ -1052,10 +1052,10 @@ public class ModRegistry {
      * and namespace-to-modId alias resolution. No fuzzy matching.
      */
     //? if >=1.21.11 {
-    /*public static boolean isWhitelistedChannel(Identifier channel) {*/
+    public static boolean isWhitelistedChannel(Identifier channel) {
     //?} else {
-    public static boolean isWhitelistedChannel(ResourceLocation channel) {
-    //?}
+    /*public static boolean isWhitelistedChannel(ResourceLocation channel) {
+    *///?}
         if (channel == null) return false;
 
         String namespace = channel.getNamespace();

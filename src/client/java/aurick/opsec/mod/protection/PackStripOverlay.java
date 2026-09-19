@@ -32,20 +32,20 @@ public class PackStripOverlay extends Screen {
         if (queue.isEmpty()) return;
         if (mc.level == null) return;
         //? if >=26.2 {
-        /*if (mc.gui.screen() != null) return;*/
+        if (mc.gui.screen() != null) return;
         //?} else {
-        if (mc.screen != null) return;
-        //?}
+        /*if (mc.screen != null) return;
+        *///?}
         long now = System.currentTimeMillis();
         if (now - lastShownAt < MIN_SHOW_INTERVAL_MS) return;
         Pending p = queue.poll();
         if (p == null) return;
         lastShownAt = now;
         //? if >=26.2 {
-        /*mc.setScreenAndShow(new PackStripOverlay(p.id, p.required));*/
+        mc.setScreenAndShow(new PackStripOverlay(p.id, p.required));
         //?} else {
-        mc.setScreen(new PackStripOverlay(p.id, p.required));
-        //?}
+        /*mc.setScreen(new PackStripOverlay(p.id, p.required));
+        *///?}
     }
 
     public static synchronized void clearQueue() {

@@ -1,10 +1,7 @@
 package aurick.opsec.mod;
 
-import aurick.opsec.mod.accounts.AccountManager;
 import aurick.opsec.mod.command.OpsecCommand;
-import aurick.opsec.mod.config.OpsecConfig;
 import aurick.opsec.mod.config.JarIntegrityChecker;
-import aurick.opsec.mod.config.UpdateChecker;
 import aurick.opsec.mod.protection.PackStripOverlay;
 import aurick.opsec.mod.protection.ShaderStripTracker;
 import aurick.opsec.mod.tracking.ModRegistry;
@@ -18,11 +15,11 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 //? if >=1.21.11 {
-/*import net.minecraft.resources.Identifier;
-*/
+import net.minecraft.resources.Identifier;
+
 //?} else {
-import net.minecraft.resources.ResourceLocation;
-//?}
+/*import net.minecraft.resources.ResourceLocation;
+*///?}
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -38,18 +35,19 @@ import java.util.function.Supplier;
  * Loads configuration and initializes protection systems.
  */
 public class OpsecClient implements ClientModInitializer {
+
+	public static boolean disclaimed = false;
+
 	@Override
 	public void onInitializeClient() {
 		// Log mod initialization
 		Opsec.LOGGER.info("{} v{} - Privacy protection for Minecraft", Opsec.MOD_NAME, Opsec.getVersion());
 		Opsec.LOGGER.info("Protecting against: TrackPack, Key Resolution Exploit, Client Fingerprinting");
 		
-		OpsecConfig.getInstance();
 		OpsecCommand.register();
-		AccountManager.getInstance(); // Load saved accounts
 
 		// Check for mod updates (non-blocking)
-		UpdateChecker.checkForUpdate();
+//		UpdateChecker.checkForUpdate();
 
 		// Check jar integrity against GitHub release (non-blocking)
 		JarIntegrityChecker.checkIntegrity();
@@ -95,10 +93,10 @@ public class OpsecClient implements ClientModInitializer {
 	}
 
 	//? if >=1.21.11 {
-	/*private int scanChannelSource(Supplier<Set<Identifier>> source, String label) {*/
+	private int scanChannelSource(Supplier<Set<Identifier>> source, String label) {
 	//?} else {
-	private int scanChannelSource(Supplier<Set<ResourceLocation>> source, String label) {
-	//?}
+	/*private int scanChannelSource(Supplier<Set<ResourceLocation>> source, String label) {
+	*///?}
 		try {
 			int count = 0;
 			for (var channel : source.get()) {

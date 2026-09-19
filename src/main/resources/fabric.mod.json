@@ -19,9 +19,6 @@
 		"client": [
 			"aurick.opsec.mod.OpsecClient"
 		],
-		"modmenu": [
-			"aurick.opsec.mod.config.OpsecModMenuIntegration"
-		],
 		"mixinsquared": [
 			"aurick.opsec.mod.mixin.MeteorMixinCanceller"
 		]

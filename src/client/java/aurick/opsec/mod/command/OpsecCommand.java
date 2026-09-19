@@ -13,11 +13,11 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 //? if >=26.1 {
-/*import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
-*/
+import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
+
 //?} else {
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
-//?}
+/*import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+*///?}
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.ChatFormatting;
@@ -26,11 +26,11 @@ import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 //? if >=1.21.11 {
-/*import net.minecraft.resources.Identifier;
-*/
+import net.minecraft.resources.Identifier;
+
 //?} else {
-import net.minecraft.resources.ResourceLocation;
-//?}
+/*import net.minecraft.resources.ResourceLocation;
+*///?}
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -52,33 +52,33 @@ public class OpsecCommand {
                                           CommandBuildContext context) {
         dispatcher.register(
             //? if >=26.1 {
-            /*ClientCommands.literal("opsec")*/
+            ClientCommands.literal("opsec")
             //?} else {
-            ClientCommandManager.literal("opsec")
-            //?}
+            /*ClientCommandManager.literal("opsec")
+            *///?}
                 .requires(source -> OpsecConfig.getInstance().getSettings().isDebugCommand())
                 .executes(OpsecCommand::showHelp)
                 .then(
                     //? if >=26.1 {
-                    /*ClientCommands.literal("info")*/
+                    ClientCommands.literal("info")
                     //?} else {
-                    ClientCommandManager.literal("info")
-                    //?}
+                    /*ClientCommandManager.literal("info")
+                    *///?}
                     .then(
                         //? if >=26.1 {
-                        /*ClientCommands.argument("modName", StringArgumentType.greedyString())*/
+                        ClientCommands.argument("modName", StringArgumentType.greedyString())
                         //?} else {
-                        ClientCommandManager.argument("modName", StringArgumentType.greedyString())
-                        //?}
+                        /*ClientCommandManager.argument("modName", StringArgumentType.greedyString())
+                        *///?}
                         .suggests(OpsecCommand::suggestModNames)
                         .executes(ctx -> showModInfo(ctx, StringArgumentType.getString(ctx, "modName"))))
                     .executes(ctx -> showOverview(ctx)))
                 .then(
                     //? if >=26.1 {
-                    /*ClientCommands.literal("channels")*/
+                    ClientCommands.literal("channels")
                     //?} else {
-                    ClientCommandManager.literal("channels")
-                    //?}
+                    /*ClientCommandManager.literal("channels")
+                    *///?}
                     .executes(OpsecCommand::showAllChannels))
         );
     }
@@ -273,17 +273,17 @@ public class OpsecCommand {
         int totalChannels = 0;
         for (ModRegistry.ModInfo info : ModRegistry.getAllMods()) {
             //? if >=1.21.11 {
-            /*Set<Identifier> channels = info.getChannels();*/
+            Set<Identifier> channels = info.getChannels();
             //?} else {
-            Set<ResourceLocation> channels = info.getChannels();
-            //?}
+            /*Set<ResourceLocation> channels = info.getChannels();
+            *///?}
             if (!channels.isEmpty()) {
                 source.sendFeedback(subheader(info.getDisplayName() + " (" + info.getModId() + "):"));
                 //? if >=1.21.11 {
-                /*for (Identifier channel : channels) {*/
+                for (Identifier channel : channels) {
                 //?} else {
-                for (ResourceLocation channel : channels) {
-                //?}
+                /*for (ResourceLocation channel : channels) {
+                *///?}
                     boolean whitelisted = ModRegistry.isWhitelistedChannel(channel);
                     if (whitelisted) {
                         source.sendFeedback(Component.literal("  ✓ " + channel.toString())

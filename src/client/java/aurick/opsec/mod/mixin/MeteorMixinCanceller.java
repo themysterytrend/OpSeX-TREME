@@ -128,11 +128,11 @@ public class MeteorMixinCanceller implements MixinCanceller {
     @Override
     public boolean shouldCancel(List<String> targetClassNames, String mixinClassName) {
         //? if >=26.1 {
-        /*// Meteor Client 26.1.2 removed AbstractSignEditScreenMixin upstream; nothing to cancel.
+        // Meteor Client 26.1.2 removed AbstractSignEditScreenMixin upstream; nothing to cancel.
         return false;
-        */
+        
         //?} else {
-        // Only cancel Meteor's AbstractSignEditScreenMixin when:
+        /*// Only cancel Meteor's AbstractSignEditScreenMixin when:
         // 1. Meteor Client is installed
         // 2. Meteor Fix is enabled in config
         // 3. This is the specific mixin we want to cancel
@@ -141,7 +141,7 @@ public class MeteorMixinCanceller implements MixinCanceller {
             return true;
         }
         return false;
-        //?}
+        *///?}
     }
 }
 

@@ -114,12 +114,12 @@ public class PrivacyLogger {
             }
             
             //? if >=26.2 {
-            /*var toastComponent = client.gui.toastManager();*/
+            var toastComponent = client.gui.toastManager();
             //?} else if >=1.21.2 {
-            var toastComponent = client.getToastManager();
-            //?} else {
-            /*var toastComponent = client.getToasts();*/
-            //?}
+            /*var toastComponent = client.getToastManager();
+            *///?} else {
+            /*var toastComponent = client.getToasts();
+            *///?}
             if (toastComponent == null) return;
             
             Component titleComponent = Component.literal(type.getIcon() + " " + title).withStyle(type.getColor());
@@ -151,12 +151,12 @@ public class PrivacyLogger {
             }
 
             //? if >=26.2 {
-            /*var toastComponent = client.gui.toastManager();*/
+            var toastComponent = client.gui.toastManager();
             //?} else if >=1.21.2 {
-            var toastComponent = client.getToastManager();
-            //?} else {
-            /*var toastComponent = client.getToasts();*/
-            //?}
+            /*var toastComponent = client.getToastManager();
+            *///?} else {
+            /*var toastComponent = client.getToasts();
+            *///?}
             if (toastComponent == null) return;
 
             //? if >=1.20.3 {
@@ -188,10 +188,10 @@ public class PrivacyLogger {
                 .append(Component.literal(message).withStyle(type.getColor()));
 
         //? if >=26.1 {
-        /*client.player.sendSystemMessage(component);*/
+        client.player.sendSystemMessage(component);
         //?} else {
-        client.player.displayClientMessage(component, false);
-        //?}
+        /*client.player.displayClientMessage(component, false);
+        *///?}
     }
 
     /**
@@ -213,10 +213,10 @@ public class PrivacyLogger {
         }
 
         //? if >=26.1 {
-        /*client.player.sendSystemMessage(component);*/
+        client.player.sendSystemMessage(component);
         //?} else {
-        client.player.displayClientMessage(component, false);
-        //?}
+        /*client.player.displayClientMessage(component, false);
+        *///?}
     }
     
     public static void logDetection(String category, String details) {

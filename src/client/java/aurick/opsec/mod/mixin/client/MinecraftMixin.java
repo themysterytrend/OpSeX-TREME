@@ -3,6 +3,7 @@ package aurick.opsec.mod.mixin.client;
 import aurick.opsec.mod.Opsec;
 import aurick.opsec.mod.config.OpsecConfig;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.Connection;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,6 +20,7 @@ public class MinecraftMixin {
         if (OpsecConfig.getInstance().shouldDisableTelemetry()) {
             Opsec.LOGGER.debug("[OpSec] Blocking telemetry");
             info.setReturnValue(false);
+
         }
     }
 }
