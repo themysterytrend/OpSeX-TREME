@@ -4,6 +4,7 @@
   "refmap": "client-opsec.refmap.json",
   "compatibilityLevel": "${mixin_compat_level}",
   "client": [
+    "ClientPacketListenerMixin",
     "ConnectScreenMixin",
     "TitleScreenMixin"
   ],
@@ -15,6 +16,7 @@
   },
   "verbose": false,
   "mixins": [
-    "ConnectionMixin"
+    "ConnectionMixin",
+    "ServerboundChatPacketMixin"
   ]
 }

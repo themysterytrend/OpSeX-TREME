@@ -48,17 +48,17 @@ public class OpsecConfig {
     // Per-MC-version feature gate: DownloadQueue + multi-pack stacking arrived 1.20.3.
     // 1.20.1/1.20.2 isolate the pack cache via LegacyDownloadedPackSourceMixin instead.
     //? if >=1.20.3 {
-    public static final boolean MC_VERSION_HAS_MULTI_PACK = true;
-    //?} else {
-    /*public static final boolean MC_VERSION_HAS_MULTI_PACK = false;
-    *///?}
+    /*public static final boolean MC_VERSION_HAS_MULTI_PACK = true;
+    *///?} else {
+    public static final boolean MC_VERSION_HAS_MULTI_PACK = false;
+    //?}
 
     // Block Local URLs: 1.20.1's HttpUtil lambda targeting was unreliable in practice; off there.
     //? if >=1.20.2 {
-    public static final boolean MC_VERSION_HAS_BLOCK_LOCAL_URLS = true;
-    //?} else {
-    /*public static final boolean MC_VERSION_HAS_BLOCK_LOCAL_URLS = false;
-    *///?}
+    /*public static final boolean MC_VERSION_HAS_BLOCK_LOCAL_URLS = true;
+    *///?} else {
+    public static final boolean MC_VERSION_HAS_BLOCK_LOCAL_URLS = false;
+    //?}
 
     private static volatile OpsecConfig INSTANCE;
     private static final Object LOCK = new Object();

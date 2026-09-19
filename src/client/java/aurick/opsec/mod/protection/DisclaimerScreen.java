@@ -35,11 +35,7 @@ public class DisclaimerScreen extends WarningScreen {
 
     public DisclaimerScreen(String ip) {
         super(Component.literal("This is a very bad mod"),
-                Component.literal("This is a very bad mod which is very detectable. Use ")
-                        .append(Component.literal("ExploitPreventer").withStyle(
-                                Style.EMPTY.withClickEvent(new ClickEvent.OpenUrl(URI.create("https://modrinth.com/mod/exploitpreventer"))).withColor(ChatFormatting.AQUA)
-                        ))
-                        .append(". I love you so much"),
+                Component.literal("This is a very bad mod which is very detectable. Use ExploitPreventer instead. I love you so much"),
                 Component.literal("I DON'T CARE"));
 
         this.fullIP = ip;
@@ -47,7 +43,33 @@ public class DisclaimerScreen extends WarningScreen {
         this.port = Integer.parseInt(ip.split(":")[1]);
     }
 
+
+
+    //? if<1.20.6 {
     @Override
+    protected void initButtons(int i) {
+        LinearLayout linearLayout = new LinearLayout(8, 0, LinearLayout.Orientation.HORIZONTAL);
+
+        linearLayout.addChild(Button.builder(CommonComponents.GUI_PROCEED, (button) -> {
+            ConnectScreen.startConnecting(
+                    new JoinMultiplayerScreen(new TitleScreen()),
+                    Minecraft.getInstance(),
+                    new ServerAddress(this.ip, this.port),
+                    //? if> 1.21 {
+                    new ServerData("Server", this.fullIP, false),
+                    //?} else {
+                    /*new ServerData("Server", this.fullIP, ServerData.Type.OTHER),
+
+                    *///?}
+                    false
+            );
+
+        }).build());
+        linearLayout.addChild(Button.builder(CommonComponents.GUI_BACK, (button) -> this.onClose()).build());
+    }
+
+    //?} else {
+    /*@Override
     protected @NotNull Layout addFooterButtons() {
         LinearLayout linearLayout = LinearLayout.horizontal().spacing(8);
         linearLayout.addChild(Button.builder(CommonComponents.GUI_PROCEED, (button) -> {
@@ -64,4 +86,5 @@ public class DisclaimerScreen extends WarningScreen {
         linearLayout.addChild(Button.builder(CommonComponents.GUI_BACK, (button) -> this.onClose()).build());
         return linearLayout;
     }
+    *///?}
 }

@@ -3,10 +3,10 @@ package aurick.opsec.mod.protection;
 import aurick.opsec.mod.config.OpsecConfig;
 import aurick.opsec.mod.config.SpoofSettings;
 //? if >=1.21.11 {
-import net.minecraft.util.Util;
-//?} else {
-/*import net.minecraft.Util;
-*///?}
+/*import net.minecraft.util.Util;
+*///?} else {
+import net.minecraft.Util;
+//?}
 
 import java.util.Optional;
 import java.util.Set;
@@ -78,14 +78,14 @@ public final class PackStripHandler {
     private static boolean isHttpUrl(String url) {
         try {
             //? if >=1.21 {
-            Util.parseAndValidateUntrustedUri(url);
-            //?} else {
-            /*java.net.URI uri = java.net.URI.create(url);
+            /*Util.parseAndValidateUntrustedUri(url);
+            *///?} else {
+            java.net.URI uri = java.net.URI.create(url);
             String scheme = uri.getScheme();
             if (scheme == null || (!scheme.equalsIgnoreCase("http") && !scheme.equalsIgnoreCase("https"))) {
                 return false;
             }
-            *///?}
+            //?}
             return true;
         } catch (Exception e) {
             return false;

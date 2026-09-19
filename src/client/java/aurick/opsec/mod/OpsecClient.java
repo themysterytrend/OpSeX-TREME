@@ -9,17 +9,17 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 //? if >=1.20.2 {
-import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
-//?}
+/*import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
+*///?}
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 //? if >=1.21.11 {
-import net.minecraft.resources.Identifier;
+/*import net.minecraft.resources.Identifier;
 
-//?} else {
-/*import net.minecraft.resources.ResourceLocation;
-*///?}
+*///?} else {
+import net.minecraft.resources.ResourceLocation;
+//?}
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -80,23 +80,23 @@ public class OpsecClient implements ClientModInitializer {
 
 		channelCount += scanChannelSource(ClientPlayNetworking::getGlobalReceivers, "play channels");
 		//? if >=1.20.2 {
-		channelCount += scanChannelSource(ClientConfigurationNetworking::getGlobalReceivers, "config channels");
-		//?}
+		/*channelCount += scanChannelSource(ClientConfigurationNetworking::getGlobalReceivers, "config channels");
+		*///?}
 		channelCount += scanChannelSource(ClientPlayNetworking::getReceived, "play received channels");
 		channelCount += scanChannelSource(ClientPlayNetworking::getSendable, "play sendable channels");
 		//? if >=1.20.2 {
-		channelCount += scanChannelSource(ClientConfigurationNetworking::getReceived, "config received channels");
+		/*channelCount += scanChannelSource(ClientConfigurationNetworking::getReceived, "config received channels");
 		channelCount += scanChannelSource(ClientConfigurationNetworking::getSendable, "config sendable channels");
-		//?}
+		*///?}
 
 		Opsec.LOGGER.debug("[OpSec] Scanned {} mod channels at startup", channelCount);
 	}
 
 	//? if >=1.21.11 {
-	private int scanChannelSource(Supplier<Set<Identifier>> source, String label) {
-	//?} else {
-	/*private int scanChannelSource(Supplier<Set<ResourceLocation>> source, String label) {
-	*///?}
+	/*private int scanChannelSource(Supplier<Set<Identifier>> source, String label) {
+	*///?} else {
+	private int scanChannelSource(Supplier<Set<ResourceLocation>> source, String label) {
+	//?}
 		try {
 			int count = 0;
 			for (var channel : source.get()) {

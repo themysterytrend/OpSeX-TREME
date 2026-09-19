@@ -3,23 +3,23 @@ package aurick.opsec.mod.protection;
 import aurick.opsec.mod.config.OpsecConfig;
 import aurick.opsec.mod.tracking.ModRegistry;
 //? if >=1.20.5 {
-import net.minecraft.server.packs.PackLocationInfo;
-//?}
+/*import net.minecraft.server.packs.PackLocationInfo;
+*///?}
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
 //? if >=1.21.4 {
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-//?} else {
-/*import net.minecraft.server.packs.metadata.MetadataSectionSerializer;
+/*import net.minecraft.server.packs.metadata.MetadataSectionType;
+*///?} else {
+import net.minecraft.server.packs.metadata.MetadataSectionSerializer;
 
-*///?}
+//?}
 import net.minecraft.server.packs.resources.IoSupplier;
 //? if >=1.21.11 {
-import net.minecraft.resources.Identifier;
+/*import net.minecraft.resources.Identifier;
 
-//?} else {
-/*import net.minecraft.resources.ResourceLocation;
-*///?}
+*///?} else {
+import net.minecraft.resources.ResourceLocation;
+//?}
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,20 +55,20 @@ public final class LangOnlyPackResources implements PackResources {
     }
 
     //? if >=1.21.11 {
-    @Override
+    /*@Override
     public IoSupplier<InputStream> getResource(PackType type, Identifier location) {
         if (filterActive() && !isLangResource(type, location.getPath())) return null;
         if (shouldStripShader(type, location.getNamespace(), location.getPath())) return null;
         return delegate.getResource(type, location);
     }
-    //?} else {
-    /*@Override
+    *///?} else {
+    @Override
     public IoSupplier<InputStream> getResource(PackType type, ResourceLocation location) {
         if (filterActive() && !isLangResource(type, location.getPath())) return null;
         if (shouldStripShader(type, location.getNamespace(), location.getPath())) return null;
         return delegate.getResource(type, location);
     }
-    *///?}
+    //?}
 
     @Override
     public void listResources(PackType type, String namespace, String path, ResourceOutput output) {
@@ -89,23 +89,23 @@ public final class LangOnlyPackResources implements PackResources {
     }
 
     //? if >=1.21.4 {
-    @Override
+    /*@Override
     public <T> T getMetadataSection(MetadataSectionType<T> type) throws IOException {
         return delegate.getMetadataSection(type);
     }
-    //?} else {
-    /*@Override
+    *///?} else {
+    @Override
     public <T> T getMetadataSection(MetadataSectionSerializer<T> serializer) throws IOException {
         return delegate.getMetadataSection(serializer);
     }
-    *///?}
+    //?}
 
     //? if >=1.20.5 {
-    @Override
+    /*@Override
     public PackLocationInfo location() {
         return delegate.location();
     }
-    //?}
+    *///?}
 
     @Override
     public String packId() {
@@ -113,11 +113,11 @@ public final class LangOnlyPackResources implements PackResources {
     }
 
     //? if >=1.20.5 {
-    @Override
+    /*@Override
     public Optional<net.minecraft.server.packs.repository.KnownPack> knownPackInfo() {
         return delegate.knownPackInfo();
     }
-    //?}
+    *///?}
 
     @Override
     public void close() {
