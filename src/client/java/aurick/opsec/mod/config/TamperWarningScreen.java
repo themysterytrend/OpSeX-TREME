@@ -28,7 +28,7 @@ public class TamperWarningScreen extends Screen {
     private final Screen parent;
 
     public TamperWarningScreen(Screen parent) {
-        super(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_TITLE)));
+        super(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_TITLE)));
         this.parent = parent;
     }
 
@@ -54,28 +54,28 @@ public class TamperWarningScreen extends Screen {
         int y = startY;
         addCenteredStringWidget(this.title, centerX, y);
         y += textLineHeight;
-        addCenteredStringWidget(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_WARNING)), centerX, y);
+        addCenteredStringWidget(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_WARNING)), centerX, y);
         y += textLineHeight;
-        addCenteredStringWidget(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_MISMATCH)), centerX, y);
+        addCenteredStringWidget(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_MISMATCH)), centerX, y);
         y += textLineHeight;
-        addCenteredStringWidget(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_MALICIOUS)), centerX, y);
+        addCenteredStringWidget(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_MALICIOUS)), centerX, y);
         y += textLineHeight + textGap;
-        addCenteredStringWidget(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_COMPROMISED)), centerX, y);
+        addCenteredStringWidget(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_COMPROMISED)), centerX, y);
         y += textLineHeight;
-        addCenteredStringWidget(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_ACTION)), centerX, y);
+        addCenteredStringWidget(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_ACTION)), centerX, y);
         y += textLineHeight + hashGap;
-        addCenteredStringWidget(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_EXPECTED, truncate(JarIntegrityChecker.getExpectedDigest(), 16))), centerX, y);
+        addCenteredStringWidget(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_EXPECTED, truncate(JarIntegrityChecker.getExpectedDigest(), 16))), centerX, y);
         y += textLineHeight;
-        addCenteredStringWidget(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_ACTUAL, truncate(JarIntegrityChecker.getActualDigest(), 16))), centerX, y);
+        addCenteredStringWidget(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_ACTUAL, truncate(JarIntegrityChecker.getActualDigest(), 16))), centerX, y);
         y += textLineHeight + textToButtonGap;
 
         // Buttons stacked vertically, centered horizontally
-        this.addRenderableWidget(Button.builder(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_DOWNLOAD)), button -> {
+        this.addRenderableWidget(Button.builder(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_DOWNLOAD)), button -> {
             Util.getPlatform().openUri(UpdateChecker.getReleaseUrl());
             this.onClose();
         }).bounds(centerX - buttonWidth / 2, y, buttonWidth, buttonHeight).build());
 
-        this.addRenderableWidget(Button.builder(Component.literal(OpsecLang.link(OpsecStrings.TAMPER_DISMISS_PERMANENT)), button -> {
+        this.addRenderableWidget(Button.builder(Component.literal(OpsecLang.tr(OpsecStrings.TAMPER_DISMISS_PERMANENT)), button -> {
             OpsecConfig.getInstance().getSettings().setTamperWarningDismissed(true);
             OpsecConfig.getInstance().save();
             this.onClose();

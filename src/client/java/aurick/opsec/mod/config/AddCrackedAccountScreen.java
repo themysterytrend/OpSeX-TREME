@@ -116,7 +116,7 @@ public class AddCrackedAccountScreen extends Screen {
                     AccountManager.getInstance().add(account);
                     AccountManager.getInstance().setActiveAccountUuid(account.getUuid());
 
-                    statusMessage = Component.literal(OpsecLang.link(OpsecStrings.ACCOUNT_SUCCESS_ADDED_OFFLINE, account.getUsername()));
+                    statusMessage = Component.literal(OpsecLang.tr(OpsecStrings.ACCOUNT_SUCCESS_ADDED_OFFLINE, account.getUsername()));
                     if (statusLabel != null) {
                         statusLabel.setMessage(statusMessage);
                     }

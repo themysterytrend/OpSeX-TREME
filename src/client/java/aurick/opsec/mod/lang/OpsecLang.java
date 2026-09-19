@@ -3,12 +3,10 @@ package aurick.opsec.mod.lang;
 import aurick.opsec.mod.Opsec;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 
-import java.io.*;
-import java.net.URL;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
@@ -16,94 +14,76 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * See more articles on UI OpSec.
- * <p>Get JSON directly from {@code /assets/opsec/opsecang/{locale}.json}
- * {@code lang} is omitted, so the filename is vanilla
- * The device does not write to these files; no power
- * Sign the data as a code
- * {@code English.getInstance()}.
- * <p>Two maps saved: {@code backback} (cs_us) and {@code now}
- * (If you don't have a laptop or a laptop). {@lulu}
+ * Private string lookup for OpSec UI text.
+ *
+ * <p>Loads JSON from {@code /assets/opsec/opseclang/{locale}.json} directly via
+ * classpath. The directory name deliberately avoids {@code lang/} so vanilla's
+ * resource manager does not enumerate these files — server resource packs cannot
+ * contribute entries because the strings are never registered with
+ * {@code Language.getInstance()}.
+ *
+ * <p>Two maps are maintained: {@code fallback} (always en_us) and {@code current}
+ * (the active locale, or empty if no locale-specific file ships). {@link #tr}
+ * prefers current, falls back to en_us, then returns the key itself if nothing
+ * matches.
  */
 public final class OpsecLang {
-    private static final String DEFAULT_LOCALE = "cs_us";
-    private static final String PATH_PREFIX = "/assets/opsec/opsecang/";
+    private static final String DEFAULT_LOCALE = "en_us";
+    private static final String PATH_PREFIX = "/assets/opsec/opseclang/";
 
-    private static final Map<String, String> backpack = loadLocale(DEFAULT_LOCALE);
-    private static volatile Map<String, String> now = Collections.emptyMap();
+    private static final Map<String, String> fallback = loadLocale(DEFAULT_LOCALE);
+    private static volatile Map<String, String> current = Collections.emptyMap();
     private static volatile String currentLocale = DEFAULT_LOCALE;
-
-    private static boolean vanilla;
 
     private OpsecLang() {}
 
     /**
-     * The location file is added to the vanilla files folder.
-     * Contact aurick.opsec.mod.mikin.client.ClientEnglishMikin} to download.
-     * This means that any internal changes you make (even if you install new packages) will be returned to us.
-     * location filename
-     * @param vanilla; Initial configuration is done without en_us
-     *                  This is the job.
+     * Reload the current locale map based on the filename list vanilla is about
+     * to load. Called from {@link aurick.opsec.mod.mixin.client.ClientLanguageMixin}
+     * so every user-driven locale change (and every resource-pack reload) re-runs us.
+     *
+     * @param filenames vanilla's locale chain; the first non-en_us entry is taken
+     *                  as the active locale.
      */
-    public static void reload(List<String> filenames, boolean vanilla) {
-        OpsecLang.vanilla = vanilla;
-
-        for(String filename : filenames) {
-            File file = new File(Minecraft.getInstance().gameDirectory, filename);
-
-            if(file.exists())
-                continue;
-
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+    public static void reload(List<String> filenames) {
+        String locale = DEFAULT_LOCALE;
+        if (filenames != null) {
+            for (String name : filenames) {
+                if (name != null && !DEFAULT_LOCALE.equals(name)) {
+                    locale = name;
+                    break;
+                }
             }
         }
-
+        if (locale.equals(currentLocale)) return;
+        current = loadLocale(locale);
+        currentLocale = locale;
+        Opsec.LOGGER.debug("[OpSec] OpsecLang reloaded for locale '{}' ({} entries)", locale, current.size());
     }
 
     /**
-     * The code used in {@link} uses the {@code args} pattern.
-     * The code used in {@link} uses the {@code args} pattern.
+     * Resolve a string by key. {@code args} is applied via {@link String#format}
+     * when present — matches the {@code %s} style used in the bundled JSON.
      */
-    public static String link(Object... args) {
-        StringBuilder sb = new StringBuilder();
-
-        for(Object o : args)
-            sb.append(o.toString());
-
-        return sb.toString();
+    public static String tr(String key, Object... args) {
+        String template = current.get(key);
+        if (template == null) template = fallback.get(key);
+        if (template == null) return key;
+        if (args == null || args.length == 0) return template;
+        try {
+            return String.format(template, args);
+        } catch (Exception e) {
+            return template;
+        }
     }
 
     /**
-     * Kaupapa Tanthauzirani - nikudifira the @link Post link reference. Using the user interfaceI
-     * Search pages are called {@code} elements. Continue to download the original version
-     * Added @Language to block requests.
+     * Resolve a string by key and wrap as a literal {@link Component}. Use at UI
+     * call sites that need a {@code Component} — keeps text out of the vanilla
+     * {@code Language} pipeline so server resource packs cannot override it.
      */
-    public static Component component() {
-
-        String prelink = "https://raw.githubusercontent.com/PandaDevOfficial/Minecraft-All-Lang/refs/heads/main/";
-
-        MutableComponent component = Component.literal("");
-
-        now.forEach((element, postLink) -> {
-
-
-            try {
-                BufferedInputStream in = new BufferedInputStream(new URL(prelink + postLink + ".json").openStream());
-
-                String s = new String(in.readAllBytes());
-
-                component.append(element).append(s);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-
-        });
-
-        return component;
+    public static Component component(String key, Object... args) {
+        return Component.literal(tr(key, args));
     }
 
     private static Map<String, String> loadLocale(String locale) {

@@ -139,9 +139,9 @@ public class AddAccountScreen extends Screen {
                         AccountManager.getInstance().setActiveAccountUuid(account.getUuid());
                     }
                     
-                    String successMsg = OpsecLang.link(OpsecStrings.ACCOUNT_SUCCESS_ADDED, account.getUsername());
+                    String successMsg = OpsecLang.tr(OpsecStrings.ACCOUNT_SUCCESS_ADDED, account.getUsername());
                     if (account.hasRefreshToken()) {
-                        successMsg += OpsecLang.link(OpsecStrings.ACCOUNT_SUCCESS_REFRESH_SUFFIX);
+                        successMsg += OpsecLang.tr(OpsecStrings.ACCOUNT_SUCCESS_REFRESH_SUFFIX);
                     }
                     statusMessage = Component.literal(successMsg);
                     if (statusLabel != null) {
